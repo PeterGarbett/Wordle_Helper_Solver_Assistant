@@ -14,7 +14,8 @@ wordle_helper.py                    Main entry point, giving wordy feedback on p
 sieve.py                            Code to work out what words satisfy the given constraints
 wordle.py                           Code to predict wordle responses given a target word (for test purposes) 
 suggest.py                          Alternate entry point giving a terse suggestion for a trial word
-test.py                             Test harness 
+test.py                             Test harness - correct inputs
+corner_cases.sh                     Test paths for invalid inputs
 test_output.txt                     Test output
 
 

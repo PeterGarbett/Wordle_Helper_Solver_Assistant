@@ -54,7 +54,12 @@ def report(answers, limited):
     else:
         print(len(answers), " words satisfy the constraints and they are:\n", answers)
 
-    print("When restricted to words actually known to be wordle answers:")
+
+    if limited==[]:
+        print("None of these are actually known to be wordle answers")
+        return True     #Suppress trying to find best trial word
+    else:
+        print("When restricted to words actually known to be wordle answers:")
 
     if 1 == len(limited):
         print("One wordle word satisfies the constraints and it is :", limited[0])
