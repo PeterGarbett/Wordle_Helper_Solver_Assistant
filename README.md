@@ -7,8 +7,8 @@ Python3 and Linux Fedora 35
 
 README.md                            This file
 
-wordle-valid-words.txt           Valid words to use in Wordle        
-wordle-answers-alphabetical.txt     Words that are actually used as answers
+wordle-valid-words.txt              Valid words to use in Wordle        
+wordle-answers-alphabetical.txt     Words that are actually known to be possible answers
 
 wordle_helper.py                    Main entry point, giving wordy feedback on possibilities
 sieve.py                            Code to work out what words satisfy the given constraints
@@ -16,7 +16,7 @@ wordle.py                           Code to predict wordle responses given a tar
 suggest.py                          Alternate entry point giving a terse suggestion for a trial word
 test.py                             Test harness - correct inputs
 corner_cases.sh                     Test paths for invalid inputs
-test_output.txt                     Test output
+test_results.txt                    Test output
 
 
 Calling arguments (see later concrete examples)
@@ -24,7 +24,7 @@ Calling arguments (see later concrete examples)
 ./wordle_helper.py  trialword1  result1 ... 
 ./wordle.py  target_word trialword1  result1  ....
 ./suggest.py  trialword1 result1 ... 
-./test.py > test_output.txt
+./test.py > test_results.txt
 
 Algorithm
 
@@ -36,11 +36,15 @@ via Y denotations but dont know where.  The winner gets to be suggest.py output.
 wordle_helper.py tells you what the possible solutions are which is interesting
 since you can assess how good your strategy is by how fast you narrow down the possibilities.
 
+They recently added a word to the possible answers list and will probably do so again.
+In which case the program comes up blank for the answer but gives you a list
+of the more general possibilities. Hopefully not too big a list and with a few crazy entries
+that almost certainly aren't it. 
 
 Algorithm performance
 
-Distribution of games: Counter({4: 1137, 3: 807, 5: 288, 2: 68, 6: 14, 1: 1})
-Giving a solution in this number of tries on average: 3.7279
+Distribution of games: Counter({4: 1138, 3: 807, 5: 288, 2: 68, 6: 14, 1: 1})
+Giving a solution in this number of tries on average: 3.728
 
 Which is quite close to the best possible achieved by optimising decision trees,
 if the internet is to be believed. This is quite good for such as simple 
