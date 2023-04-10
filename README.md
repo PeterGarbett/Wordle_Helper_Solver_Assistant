@@ -36,15 +36,16 @@ via Y denotations but dont know where.  The winner gets to be suggest.py output.
 wordle_helper.py tells you what the possible solutions are which is interesting
 since you can assess how good your strategy is by how fast you narrow down the possibilities.
 
-They recently added a word to the possible answers list and will probably do so again.
-In which case the program comes up blank for the answer but gives you a list
-of the more general possibilities. Hopefully not too big a list and with a few crazy entries
-that almost certainly aren't it. 
+They recently added a word to the possible answers list and will probably do so again. (Yes reader
+they did! Next one will be "fubar" at this rate) In which case the program comes up blank
+for the answer but gives you a list of the more general possibilities. Hopefully not
+too big a list and with a few crazy entries that almost certainly aren't it. 
+I've modified the program so it generates suggested trial words for this case. 
 
 Algorithm performance
 
-Distribution of games: Counter({4: 1138, 3: 807, 5: 288, 2: 68, 6: 14, 1: 1})
-Giving a solution in this number of tries on average: 3.728
+Distribution of games: Counter({4: 1139, 3: 807, 5: 288, 2: 68, 6: 14, 1: 1})
+Giving a solution in this number of tries on average: 3.7281
 
 Which is quite close to the best possible achieved by optimising decision trees,
 if the internet is to be believed. This is quite good for such as simple 

@@ -1816,6 +1816,7 @@ smoke found in: 4 using sequence ['later', 'noise', 'speck', 'smoke']
 smoky found in: 4 using sequence ['later', 'noisy', 'showy', 'smoky']
 smote found in: 4 using sequence ['later', 'heist', 'stunk', 'smote']
 snack found in: 4 using sequence ['later', 'mason', 'shank', 'snack']
+snafu found in: 4 using sequence ['later', 'mason', 'shank', 'snafu']
 snail found in: 2 using sequence ['later', 'snail']
 snake found in: 4 using sequence ['later', 'shade', 'spunk', 'snake']
 snaky found in: 4 using sequence ['later', 'mason', 'shank', 'snaky']
@@ -2315,5 +2316,5 @@ youth found in: 4 using sequence ['later', 'hoist', 'thumb', 'youth']
 zebra found in: 4 using sequence ['later', 'cedar', 'yearn', 'zebra']
 zesty found in: 5 using sequence ['later', 'heist', 'soapy', 'testy', 'zesty']
 zonal found in: 3 using sequence ['later', 'snail', 'zonal']
-Distribution of games: Counter({4: 1138, 3: 807, 5: 288, 2: 68, 6: 14, 1: 1})
-Giving a solution in this number of tries on average: 3.728
+Distribution of games: Counter({4: 1139, 3: 807, 5: 288, 2: 68, 6: 14, 1: 1})
+Giving a solution in this number of tries on average: 3.7281

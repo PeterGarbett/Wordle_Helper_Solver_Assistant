@@ -57,7 +57,7 @@ def report(answers, limited):
 
     if limited==[]:
         print("None of these are actually known to be wordle answers")
-        return True     #Suppress trying to find best trial word
+        return False
     else:
         print("When restricted to words actually known to be wordle answers:")
 
@@ -381,10 +381,14 @@ def main():
 
     solved = report(answers, limited)  # Wordy report of possibilities left
 
-    if not solved and 1 < len(answers):
-        scores = best_trial_words(guesslist, limited, possible_answers)
-        print("Suggested trial word:", scores[-1][1])
-
+    if not solved :
+        if 1 < len(limited):
+            scores = best_trial_words(guesslist, limited, possible_answers)
+            print("Suggested trial word:", scores[-1][1])
+        else:   # Suggest a trial word in the case where no known answers fit
+            scores = best_trial_words(guesslist, answers, possible_answers)
+            print("Now its down to spot the new wordle word")
+            print("Suggested trial word:", scores[-1][1])
 
 #
 #   Entry point for suggest.py
