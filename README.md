@@ -13,6 +13,9 @@ wordle-answers-alphabetical.txt     Words that are actually known to be possible
 wordle_helper.py                    Main entry point, giving wordy feedback on possibilities
 sieve.py                            Code to work out what words satisfy the given constraints
 wordle.py                           Code to predict wordle responses given a target word (for test purposes) 
+strategy.py                         Given a sequence of wordle trial words and results
+                                    print the number of  words that satisfy the constraints
+                                    at each stage so you can assess how good your word choices were
 suggest.py                          Alternate entry point giving a terse suggestion for a trial word
 test.py                             Test harness - correct inputs
 corner_cases.sh                     Test paths for invalid inputs
@@ -23,6 +26,7 @@ Calling arguments (see later concrete examples)
 
 ./wordle_helper.py  trialword1  result1 ... 
 ./wordle.py  target_word trialword1  result1  ....
+./strategy.py  trialword1  result1 ... 
 ./suggest.py  trialword1 result1 ... 
 ./test.py > test_results.txt
 
