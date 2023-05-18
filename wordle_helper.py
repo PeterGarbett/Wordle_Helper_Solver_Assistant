@@ -13,6 +13,21 @@ from operator import concat
 from collections import Counter
 import suggest
 
+
+# Use list of previous answers. This is only
+# used to determine a best guess when the answer is down to a pair
+
+
+use_previous = False        # Set so no hassle updating word lists
+previous_answers="previous-answers.txt"
+
+# The main word list files
+
+wordle_answers_alphabetical="wordle-answers-alphabetical.txt"
+wordle_valid_words="wordle-valid-words.txt"
+
+
+
 status = ["-", "-", "-", "-", "-"]
 
 # Form list of characters from a string
@@ -54,8 +69,7 @@ def report(answers, limited):
     else:
         print(len(answers), " words satisfy the constraints and they are:\n", answers)
 
-
-    if limited==[]:
+    if limited == []:
         print("None of these are actually known to be wordle answers")
         return False
     else:
@@ -67,6 +81,10 @@ def report(answers, limited):
     else:
         if len(limited) == 2:
             print("(The answer is one of these):", limited)
+            if limited[0] in exclude:
+                print(limited[0], " Has been a wordle solution before")
+            if limited[1] in exclude:
+                print(limited[1], " Has been a wordle solution before")
         else:
             print(
                 "There are ",
@@ -124,7 +142,7 @@ def freqs(mylist):
 #   Form frequency table of valid words
 
 
-def best_trial_words(guesslist, answers, lines):
+def best_trial_words(guesslist, answers, lines, gone_before):
     global index, value
 
     # Fish out easy cases first.
@@ -134,8 +152,21 @@ def best_trial_words(guesslist, answers, lines):
     if answers == []:
         return []
 
-    if len(answers) <= 2:
+    if len(answers) == 1:
         scores = [[1, answers[0]]]  # construct the required wrapper for the answer
+        return scores
+
+    #   Use if somethings appeared before to improve your chances when you are down to a pair
+
+    if len(answers) == 2:
+
+        # Default to first of the pair but use the other answer if its a previous answer
+
+        if answers[0] in gone_before:
+            scores = [[1, answers[1]]]  # construct the required wrapper for the answer
+        else:
+            scores = [[1, answers[0]]]  # construct the required wrapper for the answer
+
         return scores
 
     #
@@ -269,7 +300,7 @@ exclude = []
 
 
 def init_files():
-    with open("wordle-valid-words.txt") as f:
+    with open(wordle_valid_words) as f:
         lines = f.readlines()
     # Remove all the pesky \n's
     lines = [x.replace("\n", "") for x in lines]
@@ -280,30 +311,40 @@ def init_files():
 
 
 def load_possible_answers():
-    with open("wordle-answers-alphabetical.txt") as f:
+    with open(wordle_answers_alphabetical) as f:
         lines = f.readlines()
     # Remove all the pesky \n's
     lines = [x.replace("\n", "") for x in lines]
     return lines
 
 
-def init_exclusions():
+def init_previous():
 
     #
     #   One thing we know about wordles is they dont use
     #   the same word twice. This can be used to speed up the search
     #   but isnt appropriate for quordle and is a bit of a hack
-    #   Uncomment the next line if you really want to do this
 
-    return []
+    # However...  if the search comes down to a choice of two
+    # it can be a nice bit of information to have
+    # as a guide...  so I've resurrected this idea
+    # after getting fed up of chosing the wrong one of a pair a few times.
+
+
+    if not  use_previous:
+        return []
+
     #
     #   read list of words to exclude
     #
     #
-    with open("gone.txt") as g:
+    with open(previous_answers) as g:
         exclude = g.readlines()
     # Remove all the pesky \n's
     exclude = [x.replace("\n", "") for x in exclude]
+
+    # Make list case independent
+
     for pos in range(len(exclude)):
         exclude[pos] = exclude[pos].lower()
 
@@ -366,7 +407,7 @@ def main():
 
     lines = init_files()
     full_list = lines
-    exclude = init_exclusions()
+    gone_before = init_previous()
     possible_answers = load_possible_answers()
 
     #   We want a search of all words, not just the ones that
@@ -374,21 +415,22 @@ def main():
     #   so do this 1st and then use intersection with possible answers if needed
     #   Sorting is there just to make output pleasant (The intersection scrambles it)
 
-    answers = sieve.sieve(guesslist, lines, exclude, lines)  # possible_answers)
+    answers = sieve.sieve(guesslist, lines, [], lines)  # possible_answers)
     limited = sorted(sieve.listintersect(answers, possible_answers))
 
     # answers = full_list
 
     solved = report(answers, limited)  # Wordy report of possibilities left
 
-    if not solved :
+    if not solved:
         if 1 < len(limited):
-            scores = best_trial_words(guesslist, limited, possible_answers)
+            scores = best_trial_words(guesslist, limited, possible_answers, gone_before)
             print("Suggested trial word:", scores[-1][1])
-        else:   # Suggest a trial word in the case where no known answers fit
-            scores = best_trial_words(guesslist, answers, possible_answers)
+        else:  # Suggest a trial word in the case where no known answers fit
+            scores = best_trial_words(guesslist, answers, possible_answers, gone_before)
             print("Now its down to spot the new wordle word")
             print("Suggested trial word:", scores[-1][1])
+
 
 #
 #   Entry point for suggest.py
@@ -398,13 +440,13 @@ def main():
 def suggestion(guesslist):
 
     lines = init_files()
-    exclude = []
+    gone_before = init_previous()
     possible_answers = load_possible_answers()
 
     #   Form a list of wordle solution words that satisfy the constraints
 
-    answers = sieve.sieve(guesslist, lines, exclude, possible_answers)
-    scores = best_trial_words(guesslist, answers, possible_answers)
+    answers = sieve.sieve(guesslist, lines, [], possible_answers)
+    scores = best_trial_words(guesslist, answers, possible_answers, gone_before)
 
     return scores
 

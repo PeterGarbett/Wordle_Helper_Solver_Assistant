@@ -46,6 +46,12 @@ for the answer but gives you a list of the more general possibilities. Hopefully
 too big a list and with a few crazy entries that almost certainly aren't it. 
 I've modified the program so it generates suggested trial words for this case. 
 
+I've enabled the use of a list of previous answers. This is used only to modify
+the choice of trial word when we are down to a pair. The original idea was to modify
+searches but this by contrast is a gentle nudge. Defaults to disabled since bothering 
+with an extra word list might not be to everyones taste. I am fed up with choosing the
+wrong item from a pair.
+
 Algorithm performance
 
 Distribution of games: Counter({4: 1139, 3: 807, 5: 288, 2: 68, 6: 14, 1: 1})
