@@ -54,8 +54,9 @@ wrong item from a pair.
 
 Algorithm performance
 
-Distribution of games: Counter({4: 1139, 3: 807, 5: 288, 2: 68, 6: 14, 1: 1})
-Giving a solution in this number of tries on average: 3.7281
+Distribution of games: Counter({4: 1141, 3: 806, 5: 288, 2: 68, 6: 14, 1: 1})
+Giving a solution in this number of tries on average: 3.7286
+
 
 Which is quite close to the best possible achieved by optimising decision trees,
 if the internet is to be believed. This is quite good for such as simple 
