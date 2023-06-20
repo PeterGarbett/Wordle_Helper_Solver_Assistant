@@ -18,14 +18,13 @@ import suggest
 # used to determine a best guess when the answer is down to a pair
 
 
-use_previous = False        # Set so no hassle updating word lists
-previous_answers="previous-answers.txt"
+use_previous = False
+previous_answers = "previous-answers.txt"
 
 # The main word list files
 
-wordle_answers_alphabetical="wordle-answers-alphabetical.txt"
-wordle_valid_words="wordle-valid-words.txt"
-
+wordle_answers_alphabetical = "wordle-answers-alphabetical.txt"
+wordle_valid_words = "wordle-valid-words.txt"
 
 
 status = ["-", "-", "-", "-", "-"]
@@ -54,10 +53,10 @@ def usage():
 #   Report the findings. Made messy by the fact that
 #   we know there are words that satisfy the constraints
 #   but are never used as answers
-#
+#   
 
 
-def report(answers, limited):
+def report(answers, limited, genTrial):
 
     if answers == []:
         print("No solutions, probable constraint conflict")
@@ -68,6 +67,7 @@ def report(answers, limited):
         return True
     else:
         print(len(answers), " words satisfy the constraints and they are:\n", answers)
+        print("Suggested trial word for this list:", genTrial)
 
     if limited == []:
         print("None of these are actually known to be wordle answers")
@@ -80,7 +80,7 @@ def report(answers, limited):
         return True
     else:
         if len(limited) == 2:
-            print("(The answer is one of these):", limited)
+            print("(The answer should be  one of these):", limited)
             if limited[0] in exclude:
                 print(limited[0], " Has been a wordle solution before")
             if limited[1] in exclude:
@@ -330,8 +330,7 @@ def init_previous():
     # as a guide...  so I've resurrected this idea
     # after getting fed up of chosing the wrong one of a pair a few times.
 
-
-    if not  use_previous:
+    if not use_previous:
         return []
 
     #
@@ -420,12 +419,20 @@ def main():
 
     # answers = full_list
 
-    solved = report(answers, limited)  # Wordy report of possibilities left
+    if 1 < len(answers):
+        scores = best_trial_words(guesslist, answers, possible_answers, gone_before)
+        genTrial = scores[-1][1]
+    else:
+        genTrial = ""
+
+    #    print("Suggested trial word for general list :",genTrial)
+
+    solved = report(answers, limited, genTrial)  # Wordy report of possibilities left
 
     if not solved:
         if 1 < len(limited):
             scores = best_trial_words(guesslist, limited, possible_answers, gone_before)
-            print("Suggested trial word:", scores[-1][1])
+            print("Suggested trial word for known answers:", scores[-1][1])
         else:  # Suggest a trial word in the case where no known answers fit
             scores = best_trial_words(guesslist, answers, possible_answers, gone_before)
             print("Now its down to spot the new wordle word")

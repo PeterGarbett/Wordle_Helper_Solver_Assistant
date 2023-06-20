@@ -1073,6 +1073,7 @@ juror found in: 4 using sequence ['later', 'curio', 'furor', 'juror']
 kappa found in: 4 using sequence ['later', 'synod', 'magic', 'kappa']
 karma found in: 4 using sequence ['later', 'irony', 'marsh', 'karma']
 kayak found in: 4 using sequence ['later', 'synod', 'mucky', 'kayak']
+kazoo found in: 4 using sequence ['later', 'synod', 'havoc', 'kazoo']
 kebab found in: 4 using sequence ['later', 'shade', 'ocean', 'kebab']
 khaki found in: 4 using sequence ['later', 'mason', 'whack', 'khaki']
 kinky found in: 4 using sequence ['later', 'noisy', 'kneed', 'kinky']
@@ -2317,5 +2318,5 @@ youth found in: 4 using sequence ['later', 'hoist', 'thumb', 'youth']
 zebra found in: 4 using sequence ['later', 'cedar', 'yearn', 'zebra']
 zesty found in: 5 using sequence ['later', 'heist', 'soapy', 'testy', 'zesty']
 zonal found in: 3 using sequence ['later', 'snail', 'zonal']
-Distribution of games: Counter({4: 1141, 3: 806, 5: 288, 2: 68, 6: 14, 1: 1})
-Giving a solution in this number of tries on average: 3.7286
+Distribution of games: Counter({4: 1142, 3: 806, 5: 288, 2: 68, 6: 14, 1: 1})
+Giving a solution in this number of tries on average: 3.7288
