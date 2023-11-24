@@ -31,7 +31,7 @@ wrdlAnswers = "wordle solution words that satisfy the constraints and they are:"
 
 # Output for two and one solutions:
 
-Pairs = "The answer is one of these"
+Pairs = "The answer should be  one of these"
 Singleton = "word satisfies the constraints and it is"
 
 # A couple of error cases... no solutions
@@ -72,6 +72,7 @@ def collect_data(guesslist):
     # general has to default to 1 because thats what it should be when
     # only the restricted result is one
 
+    restrict = 0        # assume you won't find any
     general = 1
 
     # Look for strings of interest and find the values they infer or contain
