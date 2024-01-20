@@ -53,10 +53,23 @@ def usage():
 #   Report the findings. Made messy by the fact that
 #   we know there are words that satisfy the constraints
 #   but are never used as answers
-#   
+#
 
 
-def report(answers, limited, genTrial):
+def turned_up_earlier(candidates, gone_before):
+
+    # Candidates is a small list and gone_before is larger...
+
+    usage = []
+
+    for index in range(len(candidates)):
+        if candidates[index] in gone_before:
+            usage.append(candidates[index])
+
+    return usage
+
+
+def report(answers, limited, genTrial, gone_before):
 
     if answers == []:
         print("No solutions, probable constraint conflict")
@@ -67,24 +80,34 @@ def report(answers, limited, genTrial):
         return True
     else:
         print(len(answers), " words satisfy the constraints and they are:\n", answers)
-        print("Suggested trial word for this list:", genTrial)
+        print("Suggested trial word for this list:", genTrial, "\n")
 
     if limited == []:
         print("None of these are actually known to be wordle answers")
         return False
     else:
-        print("When restricted to words actually known to be wordle answers:")
+        print("When restricted to words actually known to be wordle answers,")
 
     if 1 == len(limited):
-        print("One wordle word satisfies the constraints and it is :", limited[0])
+        print("one wordle word satisfies the constraints and it is :", limited[0])
         return True
     else:
-        if len(limited) == 2:
-            print("(The answer should be  one of these):", limited)
-            if limited[0] in exclude:
-                print(limited[0], " Has been a wordle solution before")
-            if limited[1] in exclude:
-                print(limited[1], " Has been a wordle solution before")
+        if len(limited) <= 10:
+            print("the possible answers are :", limited,"\n")
+            before = turned_up_earlier(limited, gone_before)
+            if len(before) != 0:
+                if use_previous:
+                    print(
+                        "Of these, these have previously been  used as wordle solutions:",
+                        before,
+                    )
+                    candidates = [x for x in limited if x not in before]
+                    if candidates == []:
+                        print(
+                            "which is all of them, so perhaps they have reused an answer or added an extra"
+                        )
+                    else:
+                        print("leaving these more likely:", candidates)
         else:
             print(
                 "There are ",
@@ -295,7 +318,6 @@ lines = []
 full_list = []
 exclude = []
 
-
 # load a large list of 5 letter words
 
 
@@ -328,7 +350,7 @@ def init_previous():
     # However...  if the search comes down to a choice of two
     # it can be a nice bit of information to have
     # as a guide...  so I've resurrected this idea
-    # after getting fed up of chosing the wrong one of a pair a few times.
+    # after getting fed up of choosing the wrong one of a pair a few times.
 
     if not use_previous:
         return []
@@ -427,7 +449,9 @@ def main():
 
     #    print("Suggested trial word for general list :",genTrial)
 
-    solved = report(answers, limited, genTrial)  # Wordy report of possibilities left
+    solved = report(
+        answers, limited, genTrial, gone_before
+    )  # Wordy report of possibilities left
 
     if not solved:
         if 1 < len(limited):
@@ -459,5 +483,5 @@ def suggestion(guesslist):
 
 
 if __name__ == "__main__":
-    print_hi("Wordle helper/solver/assistant")
+    print_hi("Wordle helper/solver/assistant\n")
     main()

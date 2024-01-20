@@ -22,7 +22,7 @@ path_to_wordle_helper = "./"
 
 title = "Wordle helper/solver/assistant"
 satisfy = "words satisfy the constraints and they are:"  # Expect a number prior to this
-restricted = "When restricted to words actually known to be wordle answers:"
+restricted = "When restricted to words actually known to be wordle answers,"
 
 # Expect a number between these two strings:
 
@@ -31,7 +31,7 @@ wrdlAnswers = "wordle solution words that satisfy the constraints and they are:"
 
 # Output for two and one solutions:
 
-Pairs = "The answer should be  one of these"
+Pairs = "the possible answers are :"
 Singleton = "word satisfies the constraints and it is"
 
 # A couple of error cases... no solutions
