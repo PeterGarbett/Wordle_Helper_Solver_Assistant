@@ -18,8 +18,7 @@ import suggest
 # used to determine a best guess when the answer is down to a pair
 
 
-use_previous = False
-previous_answers = "previous-answers.txt"
+use_previous = True
 
 # The main word list files
 
@@ -93,7 +92,7 @@ def report(answers, limited, genTrial, gone_before):
         return True
     else:
         if len(limited) <= 10:
-            print("the possible answers are :", limited,"\n")
+            print("the possible answers are :", limited, "\n")
             before = turned_up_earlier(limited, gone_before)
             if len(before) != 0:
                 if use_previous:
@@ -324,6 +323,7 @@ exclude = []
 def init_files():
     with open(wordle_valid_words) as f:
         lines = f.readlines()
+        f.close()
     # Remove all the pesky \n's
     lines = [x.replace("\n", "") for x in lines]
     return lines
@@ -335,41 +335,69 @@ def init_files():
 def load_possible_answers():
     with open(wordle_answers_alphabetical) as f:
         lines = f.readlines()
+        f.close()
     # Remove all the pesky \n's
     lines = [x.replace("\n", "") for x in lines]
     return lines
-
-
-def init_previous():
 
     #
     #   One thing we know about wordles is they dont use
     #   the same word twice. This can be used to speed up the search
     #   but isnt appropriate for quordle and is a bit of a hack
+    #   It also will need revision or removal when words start
+    #   repeating as a matter of course.
 
     # However...  if the search comes down to a choice of two
     # it can be a nice bit of information to have
     # as a guide...  so I've resurrected this idea
     # after getting fed up of choosing the wrong one of a pair a few times.
 
+    # Attempt to open previous guess list
+    # if such an attempt is requested
+    # but fall back gracefully to not using it if its
+    # not found
+
+
+def init_previous():
+
+    global use_previous
+    previous_answers = "previous-answers.txt"
+
+    # Check if we need to do this..
+
     if not use_previous:
         return []
 
-    #
-    #   read list of words to exclude
-    #
-    #
-    with open(previous_answers) as g:
-        exclude = g.readlines()
-    # Remove all the pesky \n's
-    exclude = [x.replace("\n", "") for x in exclude]
+    try:
+        #   read list of words to exclude
+        with open(previous_answers) as g:
+            exclude = g.readlines()
+            g.close()
 
-    # Make list case independent
+            # Remove all the pesky \n's
 
-    for pos in range(len(exclude)):
-        exclude[pos] = exclude[pos].lower()
+            exclude = [x.replace("\n", "") for x in exclude]
 
-    return exclude
+            # Make list case independent
+
+            for pos in range(len(exclude)):
+                exclude[pos] = exclude[pos].lower()
+
+            return exclude
+
+    #   fallback quietly if its wanted but not found
+
+    except FileNotFoundError as err:
+        use_previous = False
+        return []
+
+    # Other errors
+
+    except Exception as err:
+        print(err)
+        use_previous = False
+
+    return []
 
 
 def main():
