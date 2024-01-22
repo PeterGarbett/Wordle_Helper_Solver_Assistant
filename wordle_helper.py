@@ -12,7 +12,7 @@ from functools import reduce
 from operator import concat
 from collections import Counter
 import suggest
-
+import readfile_ignore_comments
 
 # Use list of previous answers. This is only
 # used to determine a best guess when the answer is down to a pair
@@ -368,36 +368,13 @@ def init_previous():
     if not use_previous:
         return []
 
-    try:
-        #   read list of words to exclude
-        with open(previous_answers) as g:
-            exclude = g.readlines()
-            g.close()
+    prevList = readfile_ignore_comments.readfile_ignore_comments(previous_answers, -1)
 
-            # Remove all the pesky \n's
 
-            exclude = [x.replace("\n", "") for x in exclude]
-
-            # Make list case independent
-
-            for pos in range(len(exclude)):
-                exclude[pos] = exclude[pos].lower()
-
-            return exclude
-
-    #   fallback quietly if its wanted but not found
-
-    except FileNotFoundError as err:
-        use_previous = False
-        return []
-
-    # Other errors
-
-    except Exception as err:
-        print(err)
+    if prevList == []:
         use_previous = False
 
-    return []
+    return prevList
 
 
 def main():
