@@ -1,7 +1,10 @@
 #!/usr/bin/python3
 #
-#   I need an implmentation of the wordle rules
+#   I need an implementation of wordle
 #   in order to test my wordle helper (solver)
+#   Sanity checks added which are hopefully only
+#   tripped from command line inputs
+#
 #   Example usage:
 #
 #   ./wordle.py later lemon
@@ -24,6 +27,9 @@ def wordle(target, guesses):
         results = ["-", "-", "-", "-", "-"]
         nodups = list(set(value))
         letcounts = {s: target.count(s) for s in nodups}
+
+        if 5 != len(value):
+            return []
 
         for index in range(0, len(value)):
             if value[index] == target[index]:
@@ -68,4 +74,10 @@ if __name__ == "__main__":
         quit()
 
     target = inputs.pop(0)
+    result = wordle(target, inputs)
+
+    if result == []:
+        print("Invalid inputs")
+        quit()
+
     print(target, wordle(target, inputs))
