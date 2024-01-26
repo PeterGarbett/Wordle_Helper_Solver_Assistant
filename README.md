@@ -17,6 +17,8 @@ strategy.py                         Given a sequence of wordle trial words and r
                                     print the number of  words that satisfy the constraints
                                     at each stage so you can assess how good your word choices were
 suggest.py                          Alternate entry point giving a terse suggestion for a trial word
+readfile_ignore_comments.py 	    Read a file into a list ignoring #comments . Null return is no such file
+
 test.py                             Test harness - correct inputs
 corner_cases.sh                     Test paths for invalid inputs
 test_results.txt                    Test output
@@ -85,12 +87,20 @@ wound found in: 6 using sequence ['later', 'noisy', 'dunce', 'thump', 'frown', '
 Example usage
 
 ./wordle_helper.py later ybbyb slide bybby whole bbbgy query bbybg
+
 Wordle helper/solver/assistant
+
 7  words satisfy the constraints and they are:
  ['belly', 'felly', 'feyly', 'gelly', 'jelly', 'kelly', 'nelly']
-When restricted to words actually known to be wordle answers:
-(The answer is one of these): ['belly', 'jelly']
-Suggested trial word: belly
+Suggested trial word for this list: feign 
+
+When restricted to words actually known to be wordle answers,
+the possible answers are : ['belly', 'jelly'] 
+
+Of these, these have previously been  used as wordle solutions: ['belly']
+leaving these more likely: ['jelly']
+Suggested trial word for known answers: jelly
+
 
 ./wordle.py jelly later slide whole query belly 
 Wordle
