@@ -29,10 +29,14 @@ restricted = "When restricted to words actually known to be wordle answers,"
 There = "There are"
 wrdlAnswers = "wordle solution words that satisfy the constraints and they are:"
 
+wrdSoln1 = "There are "
+wrdSoln2 = " possible answers which are :"
+
 # Output for two and one solutions:
 
 Pairs = "the possible answers are :"
 Singleton = "word satisfies the constraints and it is"
+
 
 # A couple of error cases... no solutions
 
@@ -117,6 +121,19 @@ def collect_data(guesslist):
             xxxy = xxx.replace(There, "")
             xxxz = xxxy.replace(" ", "")
             restrict = int(xxxz)
+
+    #   Additional peices for where restricted answers
+    #   get more generous reporting
+
+    for index, iter in enumerate(stripped):
+        if wrdSoln1 in iter:
+            if wrdSoln2 in iter:
+                Wwords = iter
+                xxx = Wwords.replace(wrdSoln1, "")
+                xxxy = xxx.replace(wrdSoln2, "")
+                numeric = xxxy.split("[", 1)[0]
+                num = numeric.replace(" ", "")
+                restrict = int(num)
 
     return (general, restrict)
 

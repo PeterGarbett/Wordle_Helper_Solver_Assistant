@@ -92,7 +92,13 @@ def report(answers, limited, genTrial, gone_before):
         return True
     else:
         if len(limited) <= 10:
-            print("There are ",len(limited)," possible answers which are :", limited, "\n")
+            print(
+                "There are ",
+                len(limited),
+                " possible answers which are :",
+                limited,
+                "\n",
+            )
             before = turned_up_earlier(limited, gone_before)
             if len(before) != 0:
                 if use_previous:
@@ -369,7 +375,6 @@ def init_previous():
         return []
 
     prevList = readfile_ignore_comments.readfile_ignore_comments(previous_answers, -1)
-
 
     if prevList == []:
         use_previous = False
