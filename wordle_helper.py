@@ -92,7 +92,7 @@ def report(answers, limited, genTrial, gone_before):
         return True
     else:
         if len(limited) <= 10:
-            print("the possible answers are :", limited, "\n")
+            print("There are ",len(limited)," possible answers which are :", limited, "\n")
             before = turned_up_earlier(limited, gone_before)
             if len(before) != 0:
                 if use_previous:
