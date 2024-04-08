@@ -1,6 +1,26 @@
 #
-#	a previous answer list as of 22 Jan 2024
+#	A previous answer list as of 8 Apr 2024
 #
+BREED
+VOILA
+FINCH
+WRIST
+CLIMB
+PLAIT
+SERUM
+FROND
+TABOO
+FORCE
+REALM
+SPEAK
+STUNG
+MAYOR
+SALLY
+SNAKE
+ALOOF
+BLOCK
+RELIC
+STILL
 TWEAK
 NORTH
 LARGE
