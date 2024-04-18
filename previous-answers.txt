@@ -1,6 +1,17 @@
 #
-#	A previous answer list as of 8 Apr 2024
+#	A previous answer list as of 19th Apr 2024
 #
+RAISE
+FACET
+TITHE
+SHANK
+EQUIP
+BLIMP
+STEEL
+WHINY
+LOUSE
+BROTH
+MERGE
 BREED
 VOILA
 FINCH
