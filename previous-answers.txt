@@ -1,6 +1,8 @@
 #
-#	A previous answer list as of 19th Apr 2024
+#	A previous answer list as of 21th Apr 2024
 #
+LASER
+LUCID
 RAISE
 FACET
 TITHE
