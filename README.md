@@ -57,8 +57,8 @@ wrong item from a pair.
 
 Algorithm performance
 
-Distribution of games: Counter({4: 1142, 3: 806, 5: 288, 2: 68, 6: 14, 1: 1})
-Giving a solution in this number of tries on average: 3.7288
+Distribution of games: Counter({4: 1142, 3: 808, 5: 288, 2: 67, 6: 14, 1: 1})
+Giving a solution in this number of tries on average: 3.7289
 
 
 Which is quite close to the best possible achieved by optimising decision trees,
@@ -68,21 +68,21 @@ algorithm.
 The test output gives the sequence the solver uses to arrive at the answer
 for example these are the 14 worst case results:
 
+
+belly found in: 6 using sequence ['later', 'slide', 'whole', 'query', 'jelly', 'belly']
 bound found in: 6 using sequence ['later', 'noisy', 'dunce', 'thump', 'frown', 'bound']
 boxer found in: 6 using sequence ['later', 'disco', 'woven', 'spiky', 'thumb', 'boxer']
+brake found in: 6 using sequence ['later', 'cedar', 'spare', 'verge', 'frame', 'brake']
+broom found in: 6 using sequence ['later', 'curio', 'drown', 'skimp', 'groom', 'broom']
+catch found in: 6 using sequence ['later', 'pinch', 'women', 'zebra', 'hatch', 'catch']
 chill found in: 6 using sequence ['later', 'lousy', 'clink', 'yield', 'chili', 'chill']
 fixer found in: 6 using sequence ['later', 'disco', 'viper', 'unify', 'fiber', 'fixer']
+folly found in: 6 using sequence ['later', 'lousy', 'gland', 'welch', 'jolly', 'folly']
 found found in: 6 using sequence ['later', 'noisy', 'dunce', 'thump', 'frown', 'found']
-frame found in: 6 using sequence ['later', 'cedar', 'spare', 'verge', 'brake', 'frame']
-groom found in: 6 using sequence ['later', 'curio', 'drown', 'skimp', 'broom', 'groom']
-hatch found in: 6 using sequence ['later', 'pinch', 'women', 'zebra', 'catch', 'hatch']
 homer found in: 6 using sequence ['later', 'disco', 'woven', 'spiky', 'thumb', 'homer']
-jelly found in: 6 using sequence ['later', 'slide', 'whole', 'query', 'belly', 'jelly'] 
-jolly found in: 6 using sequence ['later', 'lousy', 'gland', 'welch', 'folly', 'jolly']
 proxy found in: 6 using sequence ['later', 'curio', 'drown', 'skimp', 'proof', 'proxy']
 roger found in: 6 using sequence ['later', 'disco', 'woven', 'spiky', 'thumb', 'roger']
 wound found in: 6 using sequence ['later', 'noisy', 'dunce', 'thump', 'frown', 'wound']
-
 
 Example usage
 
