@@ -57,8 +57,8 @@ wrong item from a pair.
 
 Algorithm performance
 
-Distribution of games: Counter({4: 1142, 3: 808, 5: 288, 2: 67, 6: 14, 1: 1})
-Giving a solution in this number of tries on average: 3.7289
+Distribution of games: Counter({4: 1143, 3: 808, 5: 288, 2: 67, 6: 14, 1: 1})
+Giving a solution in this number of tries on average: 3.729
 
 
 Which is quite close to the best possible achieved by optimising decision trees,
@@ -67,6 +67,7 @@ algorithm.
 
 The test output gives the sequence the solver uses to arrive at the answer
 for example these are the 14 worst case results:
+
 
 
 belly found in: 6 using sequence ['later', 'slide', 'whole', 'query', 'jelly', 'belly']
@@ -83,6 +84,8 @@ homer found in: 6 using sequence ['later', 'disco', 'woven', 'spiky', 'thumb', '
 proxy found in: 6 using sequence ['later', 'curio', 'drown', 'skimp', 'proof', 'proxy']
 roger found in: 6 using sequence ['later', 'disco', 'woven', 'spiky', 'thumb', 'roger']
 wound found in: 6 using sequence ['later', 'noisy', 'dunce', 'thump', 'frown', 'wound']
+
+
 
 Example usage
 

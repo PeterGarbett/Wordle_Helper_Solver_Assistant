@@ -1,6 +1,21 @@
 #
-#	A previous answer list as of 21th Apr 2024
+#	A previous answer list as of 8th May 2024
 #
+PIOUS
+MUSTY
+SHAVE
+DECAL
+VALUE
+EBONY
+SLICE
+DIARY
+PROWL
+CRAFT
+PRUNE
+GLEAM
+VAPID
+INTRO
+OVERT
 LASER
 LUCID
 RAISE
