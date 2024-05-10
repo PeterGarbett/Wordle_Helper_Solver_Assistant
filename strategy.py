@@ -138,6 +138,25 @@ def collect_data(guesslist):
     return (general, restrict)
 
 
+def boxes(code):
+
+    code = code.lower()
+
+    yellow = chr(0x1F7E8)
+    green = chr(0x1F7E9)
+    black = chr(0x2B1B)
+    white = chr(0x2B1C)
+
+    # black = white
+
+    if code == "b":
+        return black
+    if code == "y":
+        return yellow
+    if code == "g":
+        return green
+
+
 # 	The usual entry point stuff...
 
 if __name__ == "__main__":
@@ -191,3 +210,21 @@ if __name__ == "__main__":
             " ",
             f"{round(trial[1], 5): 6d}",
         )
+
+    print("\nWith a colour chart of:\n")
+
+    colours = []
+
+    for index in enumerate(inputargs):
+        if index[0] % 2 == 1:
+            colours.append(index[1])
+
+    for index in colours:
+        history = (
+            boxes(index[0])
+            + boxes(index[1])
+            + boxes(index[2])
+            + boxes(index[3])
+            + boxes(index[4])
+        )
+        print(history)
