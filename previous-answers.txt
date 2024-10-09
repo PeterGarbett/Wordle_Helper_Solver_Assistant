@@ -1,7 +1,16 @@
 #
 #
-#	A previous answer list as of 1st Oct  2024
+#	A previous answer list as of 10th Oct  2024
 #
+CARVE
+MOMMY
+JOINT
+FLOUR
+LAGER
+MINER
+TITLE
+WAGON
+SHELL
 MODEM
 CLOUD
 RIDER

@@ -57,8 +57,8 @@ wrong item from a pair.
 
 Algorithm performance
 
-Distribution of games: Counter({4: 1143, 3: 808, 5: 288, 2: 67, 6: 14, 1: 1})
-Giving a solution in this number of tries on average: 3.729
+Distribution of games: Counter({4: 1142, 3: 808, 5: 289, 2: 67, 6: 16, 1: 1})
+Giving a solution in this number of tries on average: 3.7314
 
 
 Which is quite close to the best possible achieved by optimising decision trees,
@@ -66,25 +66,25 @@ if the internet is to be believed. This is quite good for such as simple
 algorithm.
 
 The test output gives the sequence the solver uses to arrive at the answer
-for example these are the 14 worst case results:
+for example these are the 16 worst case results:
 
 
-
-belly found in: 6 using sequence ['later', 'slide', 'whole', 'query', 'jelly', 'belly']
-bound found in: 6 using sequence ['later', 'noisy', 'dunce', 'thump', 'frown', 'bound']
-boxer found in: 6 using sequence ['later', 'disco', 'woven', 'spiky', 'thumb', 'boxer']
-brake found in: 6 using sequence ['later', 'cedar', 'spare', 'verge', 'frame', 'brake']
-broom found in: 6 using sequence ['later', 'curio', 'drown', 'skimp', 'groom', 'broom']
-catch found in: 6 using sequence ['later', 'pinch', 'women', 'zebra', 'hatch', 'catch']
-chill found in: 6 using sequence ['later', 'lousy', 'clink', 'yield', 'chili', 'chill']
-fixer found in: 6 using sequence ['later', 'disco', 'viper', 'unify', 'fiber', 'fixer']
-folly found in: 6 using sequence ['later', 'lousy', 'gland', 'welch', 'jolly', 'folly']
-found found in: 6 using sequence ['later', 'noisy', 'dunce', 'thump', 'frown', 'found']
-homer found in: 6 using sequence ['later', 'disco', 'woven', 'spiky', 'thumb', 'homer']
-proxy found in: 6 using sequence ['later', 'curio', 'drown', 'skimp', 'proof', 'proxy']
-roger found in: 6 using sequence ['later', 'disco', 'woven', 'spiky', 'thumb', 'roger']
-wound found in: 6 using sequence ['later', 'noisy', 'dunce', 'thump', 'frown', 'wound']
-
+test_results.txt:belly found in: 6 using sequence ['later', 'slide', 'whole', 'query', 'jelly', 'belly']
+test_results.txt:bound found in: 6 using sequence ['later', 'noisy', 'dunce', 'thump', 'frown', 'bound']
+test_results.txt:boxer found in: 6 using sequence ['later', 'disco', 'woven', 'spiky', 'thumb', 'boxer']
+test_results.txt:brake found in: 6 using sequence ['later', 'cedar', 'spare', 'verge', 'frame', 'brake']
+test_results.txt:broom found in: 6 using sequence ['later', 'curio', 'drown', 'skimp', 'groom', 'broom']
+test_results.txt:catch found in: 6 using sequence ['later', 'pinch', 'women', 'zebra', 'hatch', 'catch']
+test_results.txt:chill found in: 6 using sequence ['later', 'lousy', 'clink', 'yield', 'chili', 'chill']
+test_results.txt:fixer found in: 6 using sequence ['later', 'disco', 'viper', 'unify', 'fiber', 'fixer']
+test_results.txt:foggy found in: 6 using sequence ['later', 'noisy', 'embed', 'sprig', 'goofy', 'foggy']
+test_results.txt:folly found in: 6 using sequence ['later', 'lousy', 'gland', 'welch', 'jolly', 'folly']
+test_results.txt:found found in: 6 using sequence ['later', 'noisy', 'dunce', 'thump', 'frown', 'found']
+test_results.txt:homer found in: 6 using sequence ['later', 'disco', 'woven', 'spiky', 'thumb', 'homer']
+test_results.txt:howdy found in: 6 using sequence ['later', 'noisy', 'embed', 'wedge', 'dowdy', 'howdy']
+test_results.txt:proxy found in: 6 using sequence ['later', 'curio', 'drown', 'skimp', 'proof', 'proxy']
+test_results.txt:roger found in: 6 using sequence ['later', 'disco', 'woven', 'spiky', 'thumb', 'roger']
+test_results.txt:wound found in: 6 using sequence ['later', 'noisy', 'dunce', 'thump', 'frown', 'wound']
 
 
 Example usage
