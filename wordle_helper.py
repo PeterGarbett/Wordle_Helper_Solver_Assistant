@@ -79,6 +79,10 @@ def report(answers, limited, genTrial, gone_before):
         return True
     else:
         print(len(answers), " words satisfy the constraints and they are:\n", answers)
+
+        if 50 <= len(answers):
+            print("Number of solutions=", len(answers))
+
         print("Suggested trial word for this list:", genTrial, "\n")
 
     if limited == []:
@@ -120,6 +124,8 @@ def report(answers, limited, genTrial, gone_before):
                 " wordle solution words that satisfy the constraints and they are:\n",
                 limited,
             )
+            if 50 <= len(limited):
+                print("Number of solutions=", len(limited))
 
     return False
 
