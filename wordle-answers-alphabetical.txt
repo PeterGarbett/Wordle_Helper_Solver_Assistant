@@ -1476,6 +1476,7 @@ pride
 pried
 prime
 primo
+primp
 print
 prior
 prism
