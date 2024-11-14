@@ -2188,6 +2188,7 @@ usual found in: 3 using sequence ['later', 'snail', 'usual']
 usurp found in: 4 using sequence ['later', 'curio', 'spurn', 'usurp']
 utile found in: 2 using sequence ['later', 'utile']
 utter found in: 3 using sequence ['later', 'sound', 'utter']
+uvula found in: 4 using sequence ['later', 'snail', 'polka', 'uvula']
 vague found in: 4 using sequence ['later', 'using', 'vogue', 'vague']
 valet found in: 2 using sequence ['later', 'valet']
 valid found in: 4 using sequence ['later', 'slimy', 'cavil', 'valid']
@@ -2323,5 +2324,5 @@ youth found in: 4 using sequence ['later', 'hoist', 'thumb', 'youth']
 zebra found in: 4 using sequence ['later', 'cedar', 'yearn', 'zebra']
 zesty found in: 5 using sequence ['later', 'heist', 'soapy', 'testy', 'zesty']
 zonal found in: 3 using sequence ['later', 'snail', 'zonal']
-Distribution of games: Counter({4: 1145, 3: 808, 5: 286, 2: 67, 6: 17, 1: 1})
-Giving a solution in this number of tries on average: 3.7311
+Distribution of games: Counter({4: 1146, 3: 808, 5: 286, 2: 67, 6: 17, 1: 1})
+Giving a solution in this number of tries on average: 3.7312
