@@ -1,7 +1,15 @@
 #
 #
-#	A previous answer list as of 6th Jan 2025
+#	A previous answer list as of 15th Jan 2025
 #
+KNACK
+FANCY
+CLOAK
+TOTAL
+DINGY
+CRAWL
+WAFER
+DRAFT
 SPRIG
 CYBER
 RELAX
