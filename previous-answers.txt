@@ -1,7 +1,12 @@
 #
 #
-#	A previous answer list as of 15th Jan 2025
+#	A previous answer list as of 20th Jan 2025
 #
+SQUID
+ROWER
+SILLY
+PROSE
+FLINT
 KNACK
 FANCY
 CLOAK
