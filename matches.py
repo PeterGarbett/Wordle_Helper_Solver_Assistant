@@ -50,26 +50,28 @@ def find_matchs():
     wrd_list = "wordle-answers-alphabetical.txt"
 
     solutions = find_in_dictionary(target, want, wrd_list)
+    how_many = len(solutions)
 
     print(
         "Solution is :",
         target,
         ", guess has colours:",
-        want,
-        "\nPossibles among words known to be wordle answers are:\n",
+        want,"\n",how_many,
+        " possibles among words known to be wordle answers which are:\n",
         solutions,
         "\n",
     )
 
     wrd_list = "wordle-valid-words.txt"
     solutions = find_in_dictionary(target, want, wrd_list)
+    how_many = len(solutions)
 
     print(
         "Solution is :",
         target,
         ", guess has colours:",
-        want,
-        "\nPossibles among valid words are:\n",
+        want,"\n",how_many,
+        " possibles among valid words which are:\n",
         solutions,
     )
 
