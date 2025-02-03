@@ -1,7 +1,21 @@
 #
 #
-#	A previous answer list as of 20th Jan 2025
+#	A previous answer list as of 3rd Feb 2025
 #
+REVUE
+CHORE
+RIVET
+TOAST
+FALSE
+UDDER
+FEVER
+SHUNT
+SUNNY
+CRISP
+CREPE
+UPPER
+REACH
+ICING
 SQUID
 ROWER
 SILLY
