@@ -176,7 +176,12 @@ def freqs(mylist):
 #   Form frequency table of valid words
 
 
-def best_trial_words(guesslist, answers, lines, gone_before):
+def best_trial_words(guesslist, answers, candidates, gone_before):
+    """guesslist : previous guesses and results
+    answers   : list of words matching the constraints
+    candidate : list to pick trial words from
+    gone_before :   list of previous results"""
+
     global index, value
 
     # Fish out easy cases first.
@@ -290,11 +295,11 @@ def best_trial_words(guesslist, answers, lines, gone_before):
     for knwn in known:
         del frequencies[knwn]
     # Now assign a score to each word in the complete wordle list
-    # representing how well it includes unkown letters that are likeliest
+    # representing how well it includes unknown letters that are likeliest
     # to be found
 
     scores = []
-    for index, value in enumerate(lines):
+    for index, value in enumerate(candidates):
         letter = list(set(value))
         best = 0
         for num, tar in enumerate(letter):
@@ -305,12 +310,18 @@ def best_trial_words(guesslist, answers, lines, gone_before):
     #
     # Pick from the top items that have a reasonable score
     # This is based on a frequency count of letters occurring
-    # about which we currenly know nothing.  This is a pretty
+    # about which we currently know nothing.  This is a pretty
     # simple minded idea that works surprisingly well
+
+    # The way we form the list 'scores' means
+    # its size is len(candidates)
 
     candidates = []
     top_score = scores[-1][0]
-    for highscore in range(1, 10):
+
+    samples = min(len(scores),10)
+
+    for highscore in range(1,samples): 
         if top_score - 60 <= scores[-highscore][0]:
             candidates.append(scores[-highscore])
     #
