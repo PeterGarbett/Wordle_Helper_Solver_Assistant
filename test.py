@@ -16,7 +16,27 @@ if __name__ == "__main__":
 
     possible_answers = wordle_helper.load_possible_answers()
     testcases = possible_answers  # test against all possibles
-
+    # testcases=["catch"]
+    worst = [
+        "belly",
+        "bound",
+        "boxer",
+        "brake",
+        "bring",
+        "broom",
+        "catch",
+        "chill",
+        "fiber",
+        "foggy",
+        "folly",
+        "found",
+        "homer",
+        "howdy",
+        "proxy",
+        "roger",
+        "wound",
+    ]
+    #testcases=worst
     attempts = []  # Save list of number of moves to provide statistics later
     for target in testcases:  # All of them...
         guesslist = []
