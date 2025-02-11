@@ -176,13 +176,13 @@ def freqs(mylist):
 #   Form frequency table of valid words
 
 
-def best_trial_words(guesslist, answers, candidates, gone_before):
+def best_trial_words(guesslist, answers, search_words, gone_before):
     """guesslist : previous guesses and results
     answers   : list of words matching the constraints
     candidate : list to pick trial words from
     gone_before :   list of previous results"""
 
-    global index, value
+    global index, value, hard_mode
 
     # Fish out easy cases first.
     # No answers,1 answer (so it is the answer),and two answers
@@ -298,8 +298,13 @@ def best_trial_words(guesslist, answers, candidates, gone_before):
     # representing how well it includes unknown letters that are likeliest
     # to be found
 
+    if hard_mode:
+        allowed_guesses = answers
+    else:
+        allowed_guesses = search_words
+
     scores = []
-    for index, value in enumerate(candidates):
+    for index, value in enumerate(allowed_guesses):
         letter = list(set(value))
         best = 0
         for num, tar in enumerate(letter):
@@ -319,9 +324,9 @@ def best_trial_words(guesslist, answers, candidates, gone_before):
     candidates = []
     top_score = scores[-1][0]
 
-    samples = min(len(scores),10)
+    samples = min(len(scores), 10)
 
-    for highscore in range(1,samples): 
+    for highscore in range(1, samples):
         if top_score - 60 <= scores[-highscore][0]:
             candidates.append(scores[-highscore])
     #
@@ -399,8 +404,14 @@ def init_previous():
     return prevList
 
 
-def main():
-    global guesslist, index, lines, full_list, exclude, answers, scores, post, promote
+hard_mode = False
+
+
+def main(hard):
+    global guesslist, index, lines, full_list, exclude, answers, scores, post, promote, hard_mode
+
+    hard_mode = hard
+
     # Pick up word/result pairs from the command line
 
     caller = sys.argv.pop(0)
@@ -495,7 +506,7 @@ def main():
 #
 
 
-def suggestion(guesslist):
+def suggestion(guesslist,hard):
 
     lines = init_files()
     gone_before = init_previous()
@@ -511,4 +522,4 @@ def suggestion(guesslist):
 
 if __name__ == "__main__":
     print_hi("Wordle helper/solver/assistant\n")
-    main()
+    main(False)

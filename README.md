@@ -10,6 +10,7 @@ README.md                            This file
 wordle-valid-words.txt              Valid words to use in Wordle        
 wordle-answers-alphabetical.txt     Words that are actually known to be possible answers
 
+wordle_hard.py                      Entry point if we want hard mode
 wordle_helper.py                    Main entry point, giving wordy feedback on possibilities
 sieve.py                            Code to work out what words satisfy the given constraints
 wordle.py                           Code to predict wordle responses given a target word (for test purposes) 
