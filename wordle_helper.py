@@ -176,13 +176,13 @@ def freqs(mylist):
 #   Form frequency table of valid words
 
 
-def best_trial_words(guesslist, answers, search_words, gone_before):
+def best_trial_words(guesslist, answers, search_words, gone_before, hard_mode=False):
     """guesslist : previous guesses and results
     answers   : list of words matching the constraints
     candidate : list to pick trial words from
     gone_before :   list of previous results"""
 
-    global index, value, hard_mode
+    global index, value
 
     # Fish out easy cases first.
     # No answers,1 answer (so it is the answer),and two answers
@@ -404,13 +404,8 @@ def init_previous():
     return prevList
 
 
-hard_mode = False
-
-
 def main(hard):
-    global guesslist, index, lines, full_list, exclude, answers, scores, post, promote, hard_mode
-
-    hard_mode = hard
+    global guesslist, index, lines, full_list, exclude, answers, scores, post, promote
 
     # Pick up word/result pairs from the command line
 
@@ -480,7 +475,9 @@ def main(hard):
     # answers = full_list
 
     if 1 < len(answers):
-        scores = best_trial_words(guesslist, answers, possible_answers, gone_before)
+        scores = best_trial_words(
+            guesslist, answers, possible_answers, gone_before, hard
+        )
         genTrial = scores[-1][1]
     else:
         genTrial = ""
@@ -493,10 +490,14 @@ def main(hard):
 
     if not solved:
         if 1 < len(limited):
-            scores = best_trial_words(guesslist, limited, possible_answers, gone_before)
+            scores = best_trial_words(
+                guesslist, limited, possible_answers, gone_before, hard
+            )
             print("Suggested trial word for known answers:", scores[-1][1])
         else:  # Suggest a trial word in the case where no known answers fit
-            scores = best_trial_words(guesslist, answers, possible_answers, gone_before)
+            scores = best_trial_words(
+                guesslist, answers, possible_answers, gone_before, hard
+            )
             print("Now its down to spot the new wordle word")
             print("Suggested trial word:", scores[-1][1])
 
@@ -506,7 +507,7 @@ def main(hard):
 #
 
 
-def suggestion(guesslist):
+def suggestion(guesslist, hard):
 
     lines = init_files()
     gone_before = init_previous()
@@ -515,7 +516,7 @@ def suggestion(guesslist):
     #   Form a list of wordle solution words that satisfy the constraints
 
     answers = sieve.sieve(guesslist, lines, [], possible_answers)
-    scores = best_trial_words(guesslist, answers, possible_answers, gone_before)
+    scores = best_trial_words(guesslist, answers, possible_answers, gone_before, hard)
 
     return scores
 

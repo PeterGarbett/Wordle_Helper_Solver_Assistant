@@ -20,7 +20,7 @@ strategy.py                         Given a sequence of wordle trial words and r
 suggest.py                          Alternate entry point giving a terse suggestion for a trial word
 readfile_ignore_comments.py 	    Read a file into a list ignoring #comments . Null return is no such file
 
-test.py                             Test harness - correct inputs
+test.py                             Test harness - correct inputs (add any parameter to invoke hard mode)
 corner_cases.sh                     Test paths for invalid inputs
 test_results.txt                    Test output
 
@@ -109,4 +109,13 @@ Suggested trial word for known answers: jelly
 Wordle
 jelly [('later', 'YBBYB'), ('slide', 'BYBBY'), ('whole', 'BBBGY'), ('query', 'BBYBG'), ('belly', 'BGGGG')]
 
+Hard mode:
+
+./wordle_hard.py can be used to provide guesses that satify constraints so far.
+To produce hard mode test results :
+./test.py hard 
+This shows that on average you do better, but risk losing:
+
+Distribution of games: Counter({4: 941, 3: 883, 5: 289, 2: 133, 6: 68, 7: 8, 8: 4, 1: 1})
+Giving a solution in this number of tries on average: 3.7048
 

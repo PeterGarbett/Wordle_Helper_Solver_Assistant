@@ -8,9 +8,17 @@ import wordle_helper
 import suggest
 import wordle
 from collections import Counter
-
+import sys
 
 if __name__ == "__main__":
+
+    wordletest = sys.argv.pop(0)
+    inputargs = sys.argv
+
+    if 0 != len(inputargs):
+        hard_mode = True
+    else:
+        hard_mode = False
 
     print("Wordle solver testing")
 
@@ -49,7 +57,7 @@ if __name__ == "__main__":
                 target, trialwords
             )  # Generate what wordle would give you for these trial words
             nexttrial = suggest.nextTry(
-                guesslist
+                guesslist,hard_mode
             )  # See what I'd suggest given those results
             trialwords.append(nexttrial)  # Prepare to use it
             if nexttrial == target:  # Success
@@ -58,8 +66,8 @@ if __name__ == "__main__":
                 break  # This ones done...carry on
         print(target, "found in:", tries, "using sequence", trialwords)
 
-        if 6 < tries:
-            print("Fails to solve in 6 tries - pointless continuing ")
+        if 6 < tries and not hard_mode:
+            print(target,"Fails to solve in 6 tries - pointless continuing ")
             exit()
 
     print("Distribution of games:", Counter(attempts))
