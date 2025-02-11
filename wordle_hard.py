@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 """ Call wordle_helper with hard mode flag set True """
 
 import wordle_helper
