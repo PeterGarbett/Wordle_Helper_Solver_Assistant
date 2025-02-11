@@ -506,7 +506,7 @@ def main(hard):
 #
 
 
-def suggestion(guesslist,hard):
+def suggestion(guesslist):
 
     lines = init_files()
     gone_before = init_previous()
