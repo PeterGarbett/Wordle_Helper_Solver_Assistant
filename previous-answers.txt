@@ -1,7 +1,15 @@
 #
 #
-#	A previous answer list as of 10th Feb 2025
+#	A previous answer list as of 18th Feb 2025
 #
+INDIE
+TRAIL
+SUAVE
+CROOK
+DITTY
+RUMBA
+RAPID
+SCORE
 GOODY
 BONUS
 STEEP
