@@ -521,6 +521,20 @@ def suggestion(guesslist, hard):
     return scores
 
 
+import os
+from contextlib import chdir
+
 if __name__ == "__main__":
-    print_hi("Wordle helper/solver/assistant\n")
-    main(False)
+
+    # The data and .py files should be in the same directory as the executable.
+    # Find out where
+
+    directory = os.path.dirname(__file__)
+
+    # Change directory to where all the other files are
+
+    with chdir(directory):
+        print_hi("Wordle helper/solver/assistant\n")
+        main(False)
+
+
