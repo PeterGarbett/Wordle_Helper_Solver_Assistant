@@ -494,6 +494,21 @@ def main(hard):
                 guesslist, limited, possible_answers, gone_before, hard
             )
             print("Suggested trial word for known answers:", scores[-1][1])
+
+            candidates = [x for x in limited if x not in gone_before]
+
+            if 0 != len(candidates) and len(candidates) != len(limited):
+                print(
+                    "There are ",
+                    len(candidates),
+                    " wordle solutions after removing previously used answers",
+                )
+                scores = best_trial_words(
+                    guesslist, candidates, possible_answers, gone_before, hard
+                )
+                print(candidates)
+                print("Suggested trial word for new answers:", scores[-1][1])
+
         else:  # Suggest a trial word in the case where no known answers fit
             scores = best_trial_words(
                 guesslist, answers, possible_answers, gone_before, hard
@@ -536,5 +551,3 @@ if __name__ == "__main__":
     with chdir(directory):
         print_hi("Wordle helper/solver/assistant\n")
         main(False)
-
-
