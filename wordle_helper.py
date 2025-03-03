@@ -493,7 +493,8 @@ def main(hard):
             scores = best_trial_words(
                 guesslist, limited, possible_answers, gone_before, hard
             )
-            print("Suggested trial word for known answers:", scores[-1][1])
+            trial_word = scores[-1][1]
+            print("Suggested trial word for known answers:", trial_word)
 
             candidates = [x for x in limited if x not in gone_before]
 
@@ -507,8 +508,20 @@ def main(hard):
                     guesslist, candidates, possible_answers, gone_before, hard
                 )
                 print(candidates)
-                print("Suggested trial word for new answers:", scores[-1][1])
-
+                trial_word2 = scores[-1][1]
+                if trial_word != trial_word2:
+                    print(
+                        "Suggested trial word ",
+                        trial_word,
+                        " modified by excluding previous answers which suggest a better word may be:",
+                        trial_word2,
+                    )
+                else:
+                    print(
+                        "Suggested trial word ",
+                        trial_word,
+                        "unchanged by considering previous answers",
+                    )
         else:  # Suggest a trial word in the case where no known answers fit
             scores = best_trial_words(
                 guesslist, answers, possible_answers, gone_before, hard
