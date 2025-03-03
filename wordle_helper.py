@@ -386,16 +386,14 @@ def load_possible_answers():
     # not found
 
 
-def init_previous():
-
-    global use_previous
-    previous_answers = "previous-answers.txt"
+def init_previous(use_previous):
 
     # Check if we need to do this..
 
     if not use_previous:
         return []
 
+    previous_answers = "previous-answers.txt"
     prevList = readfile_ignore_comments.readfile_ignore_comments(previous_answers, -1)
 
     if prevList == []:
@@ -461,7 +459,7 @@ def main(hard):
 
     lines = init_files()
     full_list = lines
-    gone_before = init_previous()
+    gone_before = init_previous(True)
     possible_answers = load_possible_answers()
 
     #   We want a search of all words, not just the ones that
@@ -535,10 +533,10 @@ def main(hard):
 #
 
 
-def suggestion(guesslist, hard):
+def suggestion(guesslist, hard,use_previous):
 
     lines = init_files()
-    gone_before = init_previous()
+    gone_before = init_previous(use_previous)
     possible_answers = load_possible_answers()
 
     #   Form a list of wordle solution words that satisfy the constraints

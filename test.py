@@ -55,9 +55,9 @@ if __name__ == "__main__":
 
             guesslist = wordle.wordle(
                 target, trialwords
-            )  # Generate what wordle would give you for these trial words
+                )  # Generate what wordle would give you for these trial words ignoring previous answers
             nexttrial = suggest.nextTry(
-                guesslist,hard_mode
+                guesslist,hard_mode,False
             )  # See what I'd suggest given those results
             trialwords.append(nexttrial)  # Prepare to use it
             if nexttrial == target:  # Success
