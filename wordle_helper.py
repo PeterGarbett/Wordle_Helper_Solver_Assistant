@@ -341,7 +341,7 @@ def best_trial_words(guesslist, answers, pick_list, gone_before, hard_mode=False
     return candidates
 
 
-lines = []
+valid_words = []
 full_list = []
 exclude = []
 
@@ -350,11 +350,11 @@ exclude = []
 
 def init_valid_words():
     with open(wordle_valid_words) as f:
-        lines = f.readlines()
+        valid_words = f.readlines()
         f.close()
     # Remove all the pesky \n's
-    lines = [x.replace("\n", "") for x in lines]
-    return lines
+    valid_words = [x.replace("\n", "") for x in valid_words]
+    return valid_words
 
 
 # load a much smaller list of words used as wordle answers
@@ -362,11 +362,11 @@ def init_valid_words():
 
 def load_probable_answers():
     with open(wordle_answers_alphabetical) as f:
-        lines = f.readlines()
+        valid_words = f.readlines()
         f.close()
     # Remove all the pesky \n's
-    lines = [x.replace("\n", "") for x in lines]
-    return lines
+    valid_words = [x.replace("\n", "") for x in valid_words]
+    return valid_words
 
     #
     #   One thing we know about wordles is they dont use
@@ -403,7 +403,7 @@ def init_previous(use_previous):
 
 
 def main(hard):
-    global guesslist, index, lines, full_list, exclude, answers, scores, post, promote
+    global guesslist, index, valid_words, full_list, exclude, answers, scores, post, promote
 
     # Pick up word/result pairs from the command line
 
@@ -457,8 +457,8 @@ def main(hard):
 
         guesslist.append((testword, testresult))
 
-    lines = init_valid_words()
-    full_list = lines
+    valid_words = init_valid_words()
+    full_list = valid_words
     gone_before = init_previous(True)
     probable_answers = load_probable_answers()
 
@@ -467,15 +467,13 @@ def main(hard):
     #   so do this 1st and then use intersection with probable answers if needed
     #   Sorting is there just to make output pleasant (The intersection scrambles it)
 
-    answers = sieve.sieve(guesslist, lines, [], lines)  # probable_answers)
+    answers = sieve.sieve(guesslist, valid_words, [], valid_words)  # probable_answers)
     limited = sorted(sieve.listintersect(answers, probable_answers))
 
     # answers = full_list
 
     if 1 < len(answers):
-        scores = best_trial_words(
-            guesslist, answers, limited, gone_before, hard
-        )
+        scores = best_trial_words(guesslist, answers, limited, gone_before, hard)
         genTrial = scores[-1][1]
     else:
         genTrial = ""
@@ -533,15 +531,15 @@ def main(hard):
 #
 
 
-def suggestion(guesslist, hard,use_previous):
+def suggestion(guesslist, hard, use_previous):
 
-    lines = init_valid_words()
+    valid_words = init_valid_words()
     gone_before = init_previous(use_previous)
     probable_answers = load_probable_answers()
 
     #   Form a list of wordle solution words that satisfy the constraints
 
-    answers = sieve.sieve(guesslist, lines, [], probable_answers)
+    answers = sieve.sieve(guesslist, valid_words, [], probable_answers)
     scores = best_trial_words(guesslist, answers, probable_answers, gone_before, hard)
 
     return scores
