@@ -22,7 +22,7 @@ if __name__ == "__main__":
 
     print("Wordle solver testing")
 
-    possible_answers = wordle_helper.load_possible_answers()
+    possible_answers = wordle_helper.load_probable_answers()
     testcases = possible_answers  # test against all possibles
     # testcases=["catch"]
     worst = [
