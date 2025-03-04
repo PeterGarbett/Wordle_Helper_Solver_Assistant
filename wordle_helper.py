@@ -99,7 +99,7 @@ def report(answers, limited, genTrial, gone_before):
             print(
                 "There are ",
                 len(limited),
-                " possible answers which are :",
+                " probable answers which are :",
                 limited,
                 "\n",
             )
@@ -176,10 +176,10 @@ def freqs(mylist):
 #   Form frequency table of valid words
 
 
-def best_trial_words(guesslist, answers, search_words, gone_before, hard_mode=False):
+def best_trial_words(guesslist, answers, pick_list, gone_before, hard_mode=False):
     """guesslist : previous guesses and results
     answers   : list of words matching the constraints
-    candidate : list to pick trial words from
+    pick_list : list to pick trial words from
     gone_before :   list of previous results"""
 
     global index, value
@@ -301,7 +301,7 @@ def best_trial_words(guesslist, answers, search_words, gone_before, hard_mode=Fa
     if hard_mode:
         allowed_guesses = answers
     else:
-        allowed_guesses = search_words
+        allowed_guesses = pick_list
 
     scores = []
     for index, value in enumerate(allowed_guesses):
@@ -348,7 +348,7 @@ exclude = []
 # load a large list of 5 letter words
 
 
-def init_files():
+def init_valid_words():
     with open(wordle_valid_words) as f:
         lines = f.readlines()
         f.close()
@@ -360,7 +360,7 @@ def init_files():
 # load a much smaller list of words used as wordle answers
 
 
-def load_possible_answers():
+def load_probable_answers():
     with open(wordle_answers_alphabetical) as f:
         lines = f.readlines()
         f.close()
@@ -457,24 +457,24 @@ def main(hard):
 
         guesslist.append((testword, testresult))
 
-    lines = init_files()
+    lines = init_valid_words()
     full_list = lines
     gone_before = init_previous(True)
-    possible_answers = load_possible_answers()
+    probable_answers = load_probable_answers()
 
     #   We want a search of all words, not just the ones that
     #   happen to be used as answers.
-    #   so do this 1st and then use intersection with possible answers if needed
+    #   so do this 1st and then use intersection with probable answers if needed
     #   Sorting is there just to make output pleasant (The intersection scrambles it)
 
-    answers = sieve.sieve(guesslist, lines, [], lines)  # possible_answers)
-    limited = sorted(sieve.listintersect(answers, possible_answers))
+    answers = sieve.sieve(guesslist, lines, [], lines)  # probable_answers)
+    limited = sorted(sieve.listintersect(answers, probable_answers))
 
     # answers = full_list
 
     if 1 < len(answers):
         scores = best_trial_words(
-            guesslist, answers, possible_answers, gone_before, hard
+            guesslist, answers, limited, gone_before, hard
         )
         genTrial = scores[-1][1]
     else:
@@ -489,7 +489,7 @@ def main(hard):
     if not solved:
         if 1 < len(limited):
             scores = best_trial_words(
-                guesslist, limited, possible_answers, gone_before, hard
+                guesslist, limited, probable_answers, gone_before, hard
             )
             trial_word = scores[-1][1]
             print("Suggested trial word for known answers:", trial_word)
@@ -503,7 +503,7 @@ def main(hard):
                     " wordle solutions after removing previously used answers",
                 )
                 scores = best_trial_words(
-                    guesslist, candidates, possible_answers, gone_before, hard
+                    guesslist, candidates, limited, gone_before, hard
                 )
                 print(candidates)
                 trial_word2 = scores[-1][1]
@@ -522,7 +522,7 @@ def main(hard):
                     )
         else:  # Suggest a trial word in the case where no known answers fit
             scores = best_trial_words(
-                guesslist, answers, possible_answers, gone_before, hard
+                guesslist, answers, probable_answers, gone_before, hard
             )
             print("Now its down to spot the new wordle word")
             print("Suggested trial word:", scores[-1][1])
@@ -535,14 +535,14 @@ def main(hard):
 
 def suggestion(guesslist, hard,use_previous):
 
-    lines = init_files()
+    lines = init_valid_words()
     gone_before = init_previous(use_previous)
-    possible_answers = load_possible_answers()
+    probable_answers = load_probable_answers()
 
     #   Form a list of wordle solution words that satisfy the constraints
 
-    answers = sieve.sieve(guesslist, lines, [], possible_answers)
-    scores = best_trial_words(guesslist, answers, possible_answers, gone_before, hard)
+    answers = sieve.sieve(guesslist, lines, [], probable_answers)
+    scores = best_trial_words(guesslist, answers, probable_answers, gone_before, hard)
 
     return scores
 
