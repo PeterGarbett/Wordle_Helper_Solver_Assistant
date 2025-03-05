@@ -470,10 +470,8 @@ def main(hard):
     answers = sieve.sieve(guesslist, valid_words, [], valid_words)  # probable_answers)
     limited = sorted(sieve.listintersect(answers, probable_answers))
 
-    # answers = full_list
-
     if 1 < len(answers):
-        scores = best_trial_words(guesslist, answers, limited, gone_before, hard)
+        scores = best_trial_words(guesslist, answers, probable_answers, gone_before, hard)
         genTrial = scores[-1][1]
     else:
         genTrial = ""
