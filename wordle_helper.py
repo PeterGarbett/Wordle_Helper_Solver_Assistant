@@ -299,7 +299,7 @@ def best_trial_words(guesslist, answers, pick_list, gone_before, hard_mode=False
     # to be found
 
     if hard_mode:
-        allowed_guesses = answers
+        allowed_guesses = sorted(sieve.listintersect(answers, pick_list))
     else:
         allowed_guesses = pick_list
 
@@ -461,22 +461,30 @@ def main(hard):
     full_list = valid_words
     gone_before = init_previous(True)
 
-    # Probable answers is a list of words known to be in the 
-    # wordle answer list. 
+    # Probable answers is a list of words known to be in the
+    # wordle answer list.
 
     probable_answers = load_probable_answers()
 
     # A list of valid words consistent with the constraints
-    
-    answers = sieve.sieve(guesslist, valid_words, [], valid_words)  
-    
+
+    answers = sieve.sieve(guesslist, valid_words, [], valid_words)
+
     # A list of words that are likely to be answers, and meet the contraints
-    
+
     limited = sorted(sieve.listintersect(answers, probable_answers))
 
     if 1 < len(answers):
-        scores = best_trial_words(guesslist, answers, probable_answers, gone_before, hard)
-        genTrial = scores[-1][1]
+        scores = best_trial_words(
+            guesslist, answers, probable_answers, gone_before, hard
+        )
+
+        # Catch the case where no answers are returned
+
+        if 0 < len(scores):
+            genTrial = scores[-1][1]
+        else:
+            genTrial = ""
     else:
         genTrial = ""
 
@@ -488,7 +496,8 @@ def main(hard):
 
     if not solved:
         if 1 < len(limited):
-            scores = best_trial_words(  guesslist, limited, probable_answers, gone_before, hard
+            scores = best_trial_words(
+                guesslist, limited, probable_answers, gone_before, hard
             )
             trial_word = scores[-1][1]
             print("Suggested trial word for known answers:", trial_word)
@@ -504,7 +513,8 @@ def main(hard):
                     len(candidates),
                     " wordle solutions after removing previously used answers",
                 )
-                scores = best_trial_words(    guesslist, candidates, limited, gone_before, hard
+                scores = best_trial_words(
+                    guesslist, candidates, limited, gone_before, hard
                 )
                 print(candidates)
                 trial_word2 = scores[-1][1]
@@ -522,7 +532,8 @@ def main(hard):
                         "unchanged by considering previous answers",
                     )
         else:  # Suggest a trial word in the case where no known answers fit
-            scores = best_trial_words( guesslist, answers, probable_answers, gone_before, hard
+            scores = best_trial_words(
+                guesslist, answers, probable_answers, gone_before, hard
             )
             print("Now its down to spot the new wordle word")
             print("Suggested trial word:", scores[-1][1])
@@ -555,7 +566,7 @@ def suggestion(guesslist, hard, use_previous):
     # Suppress best_trial_words using hard mode
 
     hard = False
-    
+
     scores = best_trial_words(guesslist, answers, limited, gone_before, hard)
 
     return scores
