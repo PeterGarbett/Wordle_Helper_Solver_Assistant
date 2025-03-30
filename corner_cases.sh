@@ -19,3 +19,9 @@
 
 ./wordle_helper.py later bbbb
 ./wordle_helper.py ater bbbby
+
+# Case where scores array is null
+
+./wordle_hard.py  later bbybb hoist bgbby toddy ygbbg pouty bgbgg
+
+
