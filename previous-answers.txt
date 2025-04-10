@@ -1,7 +1,19 @@
 #
 #
-#	A previous answer list as of 30 Mar 2025
+#	A previous answer list as of Apr 11 2025
 #
+ARROW
+TURBO
+WHEAT
+SPARE
+HAZEL
+VILLA
+FOAMY
+KRILL
+SHEAR
+CURSE
+JEWEL
+BOOTY
 QUOTA
 SORRY
 VERSE
