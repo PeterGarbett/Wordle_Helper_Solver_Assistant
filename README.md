@@ -22,7 +22,12 @@ readfile_ignore_comments.py 	    Read a file into a list ignoring #comments . Nu
 
 test.py                             Test harness - correct inputs (add any parameter to invoke hard mode)
 corner_cases.sh                     Test paths for invalid inputs
-test_results.txt                    Test output
+generate_test_results               Run test program with differing scenarios
+
+wordle_test_results.txt             Normal test results
+wordle_test_results_p.txt           Test results using information about prior results
+wordle_test_results_h.txt           Hard mode test results
+wordle_test_results_hp.txt          Hard mode used with previous result info
 
 
 Calling arguments (see later concrete examples)
@@ -118,4 +123,3 @@ This shows that on average you do better, but risk losing:
 
 Distribution of games: Counter({4: 941, 3: 883, 5: 289, 2: 133, 6: 68, 7: 8, 8: 4, 1: 1})
 Giving a solution in this number of tries on average: 3.7048
-

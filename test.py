@@ -4,24 +4,34 @@
 #   Run the helper algorithm against all possible
 #   answers (ones actually used by wordle) to work out our worst case
 #
+import sys
+from collections import Counter
 import wordle_helper
 import suggest
 import wordle
-from collections import Counter
-import sys
 
 if __name__ == "__main__":
+    """Wordle solver test program"""
+    print("Wordle solver testing")
+    # Defaults
+
+    hard_mode = False
+    use_previous = False
 
     wordletest = sys.argv.pop(0)
     inputargs = sys.argv
 
-    if 0 != len(inputargs):
+    if "hard" in inputargs:
+        print("Hard mode selected")
         hard_mode = True
-    else:
-        hard_mode = False
 
-    print("Wordle solver testing")
+    if "prev" in inputargs:
+        print(
+            "Restrict tests to unused answers and use previous results to refine search"
+        )
+        use_previous = True
 
+    gone_before = wordle_helper.init_previous(use_previous)
     possible_answers = wordle_helper.load_probable_answers()
     testcases = possible_answers  # test against all possibles
     # testcases=["catch"]
@@ -44,7 +54,13 @@ if __name__ == "__main__":
         "roger",
         "wound",
     ]
-    #testcases=worst
+    # testcases=worst
+
+    # restrict to solutions we haven't had yet
+
+    if use_previous:
+        testcases = [x for x in testcases if x not in gone_before]
+
     attempts = []  # Save list of number of moves to provide statistics later
     for target in testcases:  # All of them...
         guesslist = []
@@ -55,9 +71,9 @@ if __name__ == "__main__":
 
             guesslist = wordle.wordle(
                 target, trialwords
-                )  # Generate what wordle would give you for these trial words ignoring previous answers
+            )  # Generate what wordle would give you for these trial words ignoring previous answers
             nexttrial = suggest.nextTry(
-                guesslist,hard_mode,False
+                guesslist, hard_mode, use_previous
             )  # See what I'd suggest given those results
             trialwords.append(nexttrial)  # Prepare to use it
             if nexttrial == target:  # Success
@@ -67,8 +83,8 @@ if __name__ == "__main__":
         print(target, "found in:", tries, "using sequence", trialwords)
 
         if 6 < tries and not hard_mode:
-            print(target,"Fails to solve in 6 tries - pointless continuing ")
-            exit()
+            print(target, "Fails to solve in 6 tries - pointless continuing ")
+            sys.exit()
 
     print("Distribution of games:", Counter(attempts))
     print(
