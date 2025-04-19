@@ -554,6 +554,11 @@ def suggestion(guesslist, hard, use_previous):
 
     answers = sieve.sieve(guesslist, valid_words, [], probable_answers)
 
+    # Remove ones that have appeared before
+
+    if use_previous:
+        answers = [x for x in answers if x not in gone_before]
+
     # Implement hard mode here by removing any candidate trial words that
     # don't meet the contraints. This is neater and clearer than the interactive
     # helping results which may benefit from refactoring
@@ -562,6 +567,8 @@ def suggestion(guesslist, hard, use_previous):
         limited = sorted(sieve.listintersect(answers, probable_answers))
     else:
         limited = probable_answers
+
+
 
     # Suppress best_trial_words using hard mode
 
