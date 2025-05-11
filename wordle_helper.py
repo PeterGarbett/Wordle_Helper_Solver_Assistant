@@ -83,7 +83,10 @@ def report(answers, limited, genTrial, gone_before):
         if 50 <= len(answers):
             print("Number of solutions=", len(answers))
 
-        print("Suggested trial word for this list:", genTrial, "\n")
+        if genTrial == "":
+            print("For this list no trial word known meets the contraints")
+        else:
+            print("Suggested trial word for this list:", genTrial, "\n")
 
     if limited == []:
         print("None of these are actually known to be wordle answers")
@@ -312,6 +315,9 @@ def best_trial_words(guesslist, answers, pick_list, gone_before, hard_mode=False
         scores.append([best, value])
     scores = sorted(scores)
 
+    if not scores:
+        return []
+
     #
     # Pick from the top items that have a reasonable score
     # This is based on a frequency count of letters occurring
@@ -533,7 +539,10 @@ def main(hard):
                 guesslist, answers, probable_answers, gone_before, hard
             )
             print("Now its down to spot the new wordle word")
-            print("Suggested trial word:", scores[-1][1])
+            if not scores:
+                print("No known words meet the constraints")
+            else:
+                print("Suggested trial word:", scores[-1][1])
 
 
 #
