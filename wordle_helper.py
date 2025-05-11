@@ -342,7 +342,6 @@ def best_trial_words(guesslist, answers, pick_list, gone_before, hard_mode=False
 
 
 valid_words = []
-full_list = []
 exclude = []
 
 # load a large list of 5 letter words
@@ -403,7 +402,7 @@ def init_previous(use_previous):
 
 
 def main(hard):
-    global guesslist, index, valid_words, full_list, exclude, answers, scores, post, promote
+    global guesslist, index, valid_words,  exclude, answers, scores, post, promote
 
     # Pick up word/result pairs from the command line
 
@@ -458,7 +457,6 @@ def main(hard):
         guesslist.append((testword, testresult))
 
     valid_words = init_valid_words()
-    full_list = valid_words
     gone_before = init_previous(True)
 
     # Probable answers is a list of words known to be in the
