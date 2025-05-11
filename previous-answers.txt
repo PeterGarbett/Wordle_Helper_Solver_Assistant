@@ -1,7 +1,28 @@
 #
 #
-#	A previous answer list as of Apr 20 2025
+#	A previous answer list as of May 11 2025
 #
+DOWEL
+YEAST
+TRIPE
+BALMY
+MACHO
+SUITE
+SHUSH
+TROUT
+PATSY
+WHOSE
+ADEPT
+IDLER
+BLISS
+DUMMY
+WEEDY
+CLASH
+KNOWN
+GENIE
+OZONE
+ARTSY
+SPATE
 PATCH
 INBOX
 DIRGE
