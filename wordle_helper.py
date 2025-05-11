@@ -68,7 +68,7 @@ def turned_up_earlier(candidates, gone_before):
     return usage
 
 
-def report(answers, limited, genTrial, gone_before):
+def find_and_report(answers, limited, genTrial, gone_before):
 
     if answers == []:
         print("No solutions, probable constraint conflict")
@@ -76,7 +76,7 @@ def report(answers, limited, genTrial, gone_before):
 
     if 1 == len(answers):
         print(len(answers), " word satisfies the constraints and it is :", answers[0])
-        return True
+        return (True,answers[0])
     else:
         print(len(answers), " words satisfy the constraints and they are:\n", answers)
 
@@ -90,13 +90,13 @@ def report(answers, limited, genTrial, gone_before):
 
     if limited == []:
         print("None of these are actually known to be wordle answers")
-        return False
+        return (False,[])
     else:
         print("When restricted to words actually known to be wordle answers,")
 
     if 1 == len(limited):
         print("one wordle word satisfies the constraints and it is :", limited[0])
-        return True
+        return (True,limited[0])
     else:
         if len(limited) <= 10:
             print(
@@ -130,7 +130,7 @@ def report(answers, limited, genTrial, gone_before):
             if 50 <= len(limited):
                 print("Number of solutions=", len(limited))
 
-    return False
+    return (False,limited)
 
 
 def Yscore(word, Ylist):
@@ -493,9 +493,13 @@ def main(hard):
 
     #    print("Suggested trial word for general list :",genTrial)
 
-    solved = report(
+    solved_and_answer = find_and_report(
         answers, limited, genTrial, gone_before
     )  # Wordy report of possibilities left
+
+    # Fish out the Boolean...  
+
+    solved = solved_and_answer[0]
 
     if not solved:
         if 1 < len(limited):
@@ -543,8 +547,6 @@ def main(hard):
                 print("No known words meet the constraints")
             else:
                 print("Suggested trial word:", scores[-1][1])
-
-
 #
 #   Entry point for suggest.py
 #
@@ -600,3 +602,4 @@ if __name__ == "__main__":
     with chdir(directory):
         print_hi("Wordle helper/solver/assistant\n")
         main(False)
+
