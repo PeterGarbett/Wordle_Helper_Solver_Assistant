@@ -402,7 +402,6 @@ def init_previous(use_previous):
 
 
 def main(hard):
-    global guesslist, index, valid_words,  exclude, answers, scores, post, promote
 
     # Pick up word/result pairs from the command line
 
