@@ -543,20 +543,22 @@ def suggestion(guesslist, hard, use_previous, no_print=True):
             # Form a list of known solutions which meet the constraints
             # and haven't appeared before
 
-            candidates = [x for x in probable_answers if x not in gone_before]
 
-            if 0 != len(candidates) and len(candidates) != len(limited):
+            candidates = [x for x in probable_answers if x not in gone_before]
+            cutdown  = [x for x in limited if x not in gone_before]
+
+            if 0 != len(cutdown) and len(cutdown) != len(limited):
                 if not no_print:
                     print(
                         "There are ",
-                        len(candidates),
+                        len(cutdown),
                         " wordle solutions after removing previously used answers",
                     )
                 scores = best_trial_words(
                     guesslist, limited, candidates, gone_before, hard
                 )
                 if not no_print:
-                    print(candidates)
+                    print(cutdown)
                 if scores:
                     trial_word2 = scores[-1][1]
                 else:
