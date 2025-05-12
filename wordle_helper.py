@@ -68,69 +68,86 @@ def turned_up_earlier(candidates, gone_before):
     return usage
 
 
-def find_and_report(answers, limited, genTrial, gone_before):
+def find_and_report(answers, limited, genTrial, gone_before, no_print):
 
     if answers == []:
         print("No solutions, probable constraint conflict")
         quit()
 
     if 1 == len(answers):
-        print(len(answers), " word satisfies the constraints and it is :", answers[0])
-        return (True,answers[0])
+        if not no_print:
+            print(
+                len(answers), " word satisfies the constraints and it is :", answers[0]
+            )
+        return (True, answers[0])
     else:
-        print(len(answers), " words satisfy the constraints and they are:\n", answers)
+        if not no_print:
+            print(
+                len(answers), " words satisfy the constraints and they are:\n", answers
+            )
 
         if 50 <= len(answers):
-            print("Number of solutions=", len(answers))
+            if not no_print:
+                print("Number of solutions=", len(answers))
 
-        if genTrial == "":
-            print("For this list no trial word known meets the contraints")
-        else:
-            print("Suggested trial word for this list:", genTrial, "\n")
+        if not no_print:
+            if genTrial == "":
+                print("For this list no trial word known meets the constraints")
+            else:
+                print("Suggested trial word for this list:", genTrial, "\n")
 
     if limited == []:
-        print("None of these are actually known to be wordle answers")
-        return (False,[])
+        if not no_print:
+            print("None of these are actually known to be wordle answers")
+        return (False, [])
     else:
-        print("When restricted to words actually known to be wordle answers,")
+        if not no_print:
+            print("When restricted to words actually known to be wordle answers,")
 
     if 1 == len(limited):
-        print("one wordle word satisfies the constraints and it is :", limited[0])
-        return (True,limited[0])
+        if not no_print:
+            print("one wordle word satisfies the constraints and it is :", limited[0])
+        return (True, limited[0])
     else:
         if len(limited) <= 10:
-            print(
-                "There are ",
-                len(limited),
-                " probable answers which are :",
-                limited,
-                "\n",
-            )
+            if not no_print:
+                print(
+                    "There are ",
+                    len(limited),
+                    " probable answers which are :",
+                    limited,
+                    "\n",
+                )
             before = turned_up_earlier(limited, gone_before)
             if len(before) != 0:
                 if use_previous:
-                    print(
-                        "Of these, these have previously been  used as wordle solutions:",
-                        before,
-                    )
+                    if not no_print:
+                        print(
+                            "Of these, these have previously been  used as wordle solutions:",
+                            before,
+                        )
                     candidates = [x for x in limited if x not in before]
                     if candidates == []:
-                        print(
-                            "which is all of them, so perhaps they have reused an answer or added an extra"
-                        )
+                        if not no_print:
+                            print(
+                                "which is all of them, so perhaps they have reused an answer or added an extra"
+                            )
                     else:
-                        print("leaving these more likely:", candidates)
+                        if not no_print:
+                            print("leaving these more likely:", candidates)
         else:
-            print(
-                "There are ",
-                len(limited),
-                " wordle solution words that satisfy the constraints and they are:\n",
-                limited,
-            )
+            if not no_print:
+                print(
+                    "There are ",
+                    len(limited),
+                    " wordle solution words that satisfy the constraints and they are:\n",
+                    limited,
+                )
             if 50 <= len(limited):
-                print("Number of solutions=", len(limited))
+                if not no_print:
+                    print("Number of solutions=", len(limited))
 
-    return (False,limited)
+    return (False, limited)
 
 
 def Yscore(word, Ylist):
@@ -221,7 +238,7 @@ def best_trial_words(guesslist, answers, pick_list, gone_before, hard_mode=False
     Ystatus = ["-", "-", "-", "-", "-"]
 
     #   Improve status array where letters are known by virtue of being the same
-    #   in all contrained words
+    #   in all constrained words
 
     #
     #   Produce a list of all the letters that have been tried
@@ -407,7 +424,7 @@ def init_previous(use_previous):
     return prevList
 
 
-def main(hard):
+def main(hard, use_previous):
 
     # Pick up word/result pairs from the command line
 
@@ -461,6 +478,11 @@ def main(hard):
 
         guesslist.append((testword, testresult))
 
+    suggestion(guesslist, hard, use_previous, False)
+
+
+def suggestion(guesslist, hard, use_previous, no_print=True):
+
     valid_words = init_valid_words()
     gone_before = init_previous(True)
 
@@ -473,7 +495,7 @@ def main(hard):
 
     answers = sieve.sieve(guesslist, valid_words, [], valid_words)
 
-    # A list of words that are likely to be answers, and meet the contraints
+    # A list of words that are likely to be answers, and meet the constraints
 
     limited = sorted(sieve.listintersect(answers, probable_answers))
 
@@ -494,97 +516,83 @@ def main(hard):
     #    print("Suggested trial word for general list :",genTrial)
 
     solved_and_answer = find_and_report(
-        answers, limited, genTrial, gone_before
-    )  # Wordy report of possibilities left
+        answers, limited, genTrial, gone_before, no_print
+    )
 
-    # Fish out the Boolean...  
+    # Fish out the Boolean...
 
     solved = solved_and_answer[0]
+    answer = solved_and_answer[1]
+
+    if solved:
+        return answer
+
+    # Wordy report of possibilities left
 
     if not solved:
+        trial_word = ""
         if 1 < len(limited):
             scores = best_trial_words(
                 guesslist, limited, probable_answers, gone_before, hard
             )
             trial_word = scores[-1][1]
-            print("Suggested trial word for known answers:", trial_word)
 
-            # Form a list of known solutions which meet the contraints
+            if not no_print:
+                print("Suggested trial word for known answers:", trial_word)
+
+            # Form a list of known solutions which meet the constraints
             # and haven't appeared before
 
-            candidates = [x for x in limited if x not in gone_before]
+            candidates = [x for x in probable_answers if x not in gone_before]
 
             if 0 != len(candidates) and len(candidates) != len(limited):
-                print(
-                    "There are ",
-                    len(candidates),
-                    " wordle solutions after removing previously used answers",
-                )
+                if not no_print:
+                    print(
+                        "There are ",
+                        len(candidates),
+                        " wordle solutions after removing previously used answers",
+                    )
                 scores = best_trial_words(
-                    guesslist, candidates, limited, gone_before, hard
+                    guesslist, limited, candidates, gone_before, hard
                 )
-                print(candidates)
-                trial_word2 = scores[-1][1]
-                if trial_word != trial_word2:
-                    print(
-                        "Suggested trial word ",
-                        trial_word,
-                        " modified by excluding previous answers which suggest a better word may be:",
-                        trial_word2,
-                    )
+                if not no_print:
+                    print(candidates)
+                if scores:
+                    trial_word2 = scores[-1][1]
                 else:
-                    print(
-                        "Suggested trial word ",
-                        trial_word,
-                        "unchanged by considering previous answers",
-                    )
+                    trial_word2 = trial_word
+                if trial_word != trial_word2:
+                    if not no_print:
+                        print(
+                            "Suggested trial word ",
+                            trial_word,
+                            " modified by excluding previous answers which suggest a better word may be:",
+                            trial_word2,
+                        )
+                    if use_previous:
+                        trial_word = trial_word2
+                else:
+                    if not no_print:
+                        print(
+                            "Suggested trial word ",
+                            trial_word,
+                            "unchanged by considering previous answers",
+                        )
         else:  # Suggest a trial word in the case where no known answers fit
             scores = best_trial_words(
                 guesslist, answers, probable_answers, gone_before, hard
             )
-            print("Now its down to spot the new wordle word")
+            if not no_print:
+                print("Now its down to spot the new wordle word")
             if not scores:
-                print("No known words meet the constraints")
+                if not no_print:
+                    print("No known words meet the constraints")
             else:
-                print("Suggested trial word:", scores[-1][1])
-#
-#   Entry point for suggest.py
-#
+                trial_word = scores[-1][1]
+                if not no_print:
+                    print("Suggested trial word:", trial_word)
 
-
-def suggestion(guesslist, hard, use_previous):
-
-    valid_words = init_valid_words()
-    gone_before = init_previous(use_previous)
-    probable_answers = load_probable_answers()
-
-    #   Form a list of wordle solution words that satisfy the constraints
-
-    answers = sieve.sieve(guesslist, valid_words, [], probable_answers)
-
-    # Remove ones that have appeared before
-
-    if use_previous:
-        answers = [x for x in answers if x not in gone_before]
-
-    # Implement hard mode here by removing any candidate trial words that
-    # don't meet the contraints. This is neater and clearer than the interactive
-    # helping results which may benefit from refactoring
-
-    if hard:
-        limited = sorted(sieve.listintersect(answers, probable_answers))
-    else:
-        limited = probable_answers
-
-
-
-    # Suppress best_trial_words using hard mode
-
-    hard = False
-
-    scores = best_trial_words(guesslist, answers, limited, gone_before, hard)
-
-    return scores
+        return trial_word
 
 
 import os
@@ -601,5 +609,4 @@ if __name__ == "__main__":
 
     with chdir(directory):
         print_hi("Wordle helper/solver/assistant\n")
-        main(False)
-
+        retVal = main(False, False)

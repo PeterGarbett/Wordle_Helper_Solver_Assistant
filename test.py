@@ -54,7 +54,7 @@ if __name__ == "__main__":
         "roger",
         "wound",
     ]
-    # testcases=worst
+    #testcases= ["freer"]
 
     # restrict to solutions we haven't had yet
 
@@ -75,6 +75,11 @@ if __name__ == "__main__":
             nexttrial = suggest.nextTry(
                 guesslist, hard_mode, use_previous
             )  # See what I'd suggest given those results
+        
+            # Force initial guess
+            #if index == 1:
+            #    nexttrial="later"
+    
             trialwords.append(nexttrial)  # Prepare to use it
             if nexttrial == target:  # Success
                 tries = index  # Record when

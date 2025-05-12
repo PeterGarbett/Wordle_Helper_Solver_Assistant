@@ -55,21 +55,21 @@ def good_guesslist(guesslist):
     return True
 
 
-def next_best_guess(guesslist, hard,use_previous):
+def next_best_guess(guesslist, hard, use_previous):
 
-    answers = wordle_helper.suggestion(guesslist, hard,use_previous)
-    if answers == []:  # Constraint error probably
+    answer = wordle_helper.suggestion(guesslist, hard, use_previous)
+    if answer == "":
         return ""
-    last = answers[-1]
-    return last[1]
+    return answer
 
 
-def nextTry(guesslist, hard,use_previous):
+def nextTry(guesslist, hard, use_previous):
 
     if good_guesslist(guesslist):
-        trial = next_best_guess(guesslist, hard,use_previous)
+        trial = next_best_guess(guesslist, hard, use_previous)
         return trial
     else:
+        print("Bad guess list")
         return ""
 
 

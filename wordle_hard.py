@@ -17,4 +17,4 @@ if __name__ == "__main__":
         import wordle_helper
 
         wordle_helper.print_hi("Wordle helper/solver/assistant (hard mode)\n")
-        wordle_helper.main(True)
+        retVal = wordle_helper.main(True,False)
