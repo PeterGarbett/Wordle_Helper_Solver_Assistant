@@ -174,7 +174,11 @@ def average(freqs):
         product = ind[0] * ind[1]
         sumit = sumit + product
 
-    av = sumit / denom
+    try:
+        av = sumit / denom
+    except:
+        av = 0
+
     return av
 
 
@@ -543,9 +547,8 @@ def suggestion(guesslist, hard, use_previous, no_print=True):
             # Form a list of known solutions which meet the constraints
             # and haven't appeared before
 
-
             candidates = [x for x in probable_answers if x not in gone_before]
-            cutdown  = [x for x in limited if x not in gone_before]
+            cutdown = [x for x in limited if x not in gone_before]
 
             if 0 != len(cutdown) and len(cutdown) != len(limited):
                 if not no_print:
