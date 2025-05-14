@@ -555,7 +555,7 @@ def suggestion(guesslist, hard, use_previous, no_print=True):
                         " wordle solutions after removing previously used answers",
                     )
                 scores = best_trial_words(
-                    guesslist, limited, candidates, gone_before, hard
+                    guesslist, cutdown, candidates, gone_before, hard
                 )
                 if not no_print:
                     print(cutdown)

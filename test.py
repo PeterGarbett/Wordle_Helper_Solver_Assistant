@@ -54,7 +54,7 @@ if __name__ == "__main__":
         "roger",
         "wound",
     ]
-    #testcases= ["freer"]
+    testcases= ["bongo"]
 
     # restrict to solutions we haven't had yet
 
@@ -90,7 +90,7 @@ if __name__ == "__main__":
         if 6 < tries and not hard_mode:
             print(target, "Fails to solve in 6 tries - pointless continuing ")
             sys.exit()
-
+    print("Number of games:",len(attempts))
     print("Distribution of games:", Counter(attempts))
     print(
         "Giving a solution in this number of tries on average:",

@@ -1,7 +1,9 @@
 #
 #
-#	A previous answer list as of May 12 2025
+#	A previous answer list as of May 14 2025
 #
+BONGO
+AWARE
 BICEP
 DOWEL
 YEAST
