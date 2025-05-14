@@ -2329,5 +2329,6 @@ youth found in: 4 using sequence ['later', 'hoist', 'mouth', 'youth']
 zebra found in: 3 using sequence ['later', 'bread', 'zebra']
 zesty found in: 3 using sequence ['later', 'heist', 'zesty']
 zonal found in: 3 using sequence ['later', 'snail', 'zonal']
+Number of games: 2329
 Distribution of games: Counter({4: 942, 3: 884, 5: 289, 2: 133, 6: 68, 7: 8, 8: 4, 1: 1})
 Giving a solution in this number of tries on average: 3.7046

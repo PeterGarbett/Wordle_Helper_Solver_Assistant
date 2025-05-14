@@ -54,7 +54,7 @@ if __name__ == "__main__":
         "roger",
         "wound",
     ]
-    testcases= ["bongo"]
+    #testcases= ["bongo"]
 
     # restrict to solutions we haven't had yet
 
