@@ -1,7 +1,10 @@
 #
 #
-#	A previous answer list as of May 18 2025
+#	A previous answer list as of May 21 2025
 #
+ALARM
+BORNE
+PITCH
 LIVID
 GROWN
 FIFTH

@@ -16,7 +16,6 @@ afoul found in: 4 using sequence ['later', 'slain', 'amply', 'afoul']
 after found in: 2 using sequence ['later', 'after']
 agora found in: 3 using sequence ['later', 'arson', 'agora']
 aider found in: 2 using sequence ['later', 'aider']
-alarm found in: 3 using sequence ['later', 'drawl', 'alarm']
 algae found in: 3 using sequence ['later', 'plead', 'algae']
 alibi found in: 3 using sequence ['later', 'slain', 'alibi']
 align found in: 3 using sequence ['later', 'slain', 'align']
@@ -107,7 +106,6 @@ board found in: 4 using sequence ['later', 'arson', 'cobra', 'board']
 bobby found in: 5 using sequence ['later', 'noisy', 'woody', 'poppy', 'bobby']
 boney found in: 3 using sequence ['later', 'nosey', 'boney']
 booth found in: 3 using sequence ['later', 'hoist', 'booth']
-borne found in: 4 using sequence ['later', 'rinse', 'drone', 'borne']
 bosom found in: 3 using sequence ['later', 'noisy', 'bosom']
 botch found in: 3 using sequence ['later', 'optic', 'botch']
 boule found in: 3 using sequence ['later', 'noble', 'boule']
@@ -605,7 +603,6 @@ petty found in: 3 using sequence ['later', 'fetus', 'petty']
 piano found in: 3 using sequence ['later', 'scamp', 'piano']
 piggy found in: 5 using sequence ['later', 'noisy', 'dizzy', 'wimpy', 'piggy']
 piper found in: 4 using sequence ['later', 'wiser', 'viper', 'piper']
-pitch found in: 3 using sequence ['later', 'optic', 'pitch']
 pivot found in: 4 using sequence ['later', 'hoist', 'ingot', 'pivot']
 pizza found in: 4 using sequence ['later', 'scamp', 'aping', 'pizza']
 place found in: 3 using sequence ['later', 'plead', 'place']
@@ -1005,6 +1002,6 @@ wring found in: 4 using sequence ['later', 'curio', 'risky', 'wring']
 write found in: 2 using sequence ['later', 'write']
 wryly found in: 4 using sequence ['later', 'girly', 'dryly', 'wryly']
 zonal found in: 4 using sequence ['later', 'slain', 'annul', 'zonal']
-Number of games: 1004
-Distribution of games: Counter({3: 511, 4: 337, 2: 104, 5: 42, 6: 8, 1: 1, 7: 1})
-Giving a solution in this number of tries on average: 3.3416
+Number of games: 1001
+Distribution of games: Counter({3: 509, 4: 336, 2: 104, 5: 42, 6: 8, 1: 1, 7: 1})
+Giving a solution in this number of tries on average: 3.3417
