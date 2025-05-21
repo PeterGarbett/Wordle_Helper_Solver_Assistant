@@ -5,14 +5,16 @@
 #   Suggest words to try to determine unknown letters.
 #
 #
+import os
+from contextlib import chdir
 import sys
-import wordle
-import sieve
 from functools import reduce
 from operator import concat
 from collections import Counter
+import sieve
 import suggest
 import readfile_ignore_comments
+import wordle
 
 # Use list of previous answers. This is only
 # used to determine a best guess when the answer is down to a pair
@@ -32,7 +34,7 @@ status = ["-", "-", "-", "-", "-"]
 
 
 def split(word):
-    return [char for char in word]
+    return list(word)
 
 
 def print_hi(name):
@@ -72,7 +74,7 @@ def find_and_report(answers, limited, genTrial, gone_before, no_print):
 
     if answers == []:
         print("No solutions, probable constraint conflict")
-        quit()
+        sys.exit()
 
     if 1 == len(answers):
         if not no_print:
@@ -188,7 +190,7 @@ def average(freqs):
 def freqs(mylist):
     charlist = list(map(split, mylist))
     #    print(charlist)
-    if charlist != []:
+    if charlist:
         flatlist = reduce(concat, charlist)
     else:
         flatlist = []
@@ -239,7 +241,6 @@ def best_trial_words(guesslist, answers, pick_list, gone_before, hard_mode=False
 
     frequencies = freqs(answers)
     status = ["-", "-", "-", "-", "-"]
-    Ystatus = ["-", "-", "-", "-", "-"]
 
     #   Improve status array where letters are known by virtue of being the same
     #   in all constrained words
@@ -251,7 +252,7 @@ def best_trial_words(guesslist, answers, pick_list, gone_before, hard_mode=False
     for wrdpos in range(len(guesslist)):
         allLetterGuesses.append(guesslist[wrdpos][0])
     charlist = list(map(split, allLetterGuesses))
-    if charlist != []:
+    if charlist:
         flatlist = reduce(concat, charlist)
         lettersTried = list(set(flatlist))
     else:
@@ -422,7 +423,7 @@ def init_previous(use_previous):
     previous_answers = "previous-answers.txt"
     prevList = readfile_ignore_comments.readfile_ignore_comments(previous_answers, -1)
 
-    if prevList == []:
+    if not prevList:
         use_previous = False
 
     return prevList
@@ -432,7 +433,7 @@ def main(hard, use_previous):
 
     # Pick up word/result pairs from the command line
 
-    caller = sys.argv.pop(0)
+    sys.argv.pop(0)
     inputargs = sys.argv
 
     # Make sure we have pairs of inputs
@@ -440,7 +441,7 @@ def main(hard, use_previous):
     if (len(inputargs) % 2) != 0:
         print("ERROR: Missing input argument")
         usage()
-        quit()
+        sys.exit()
 
     # Form list of testword/result tuples
     # include error checking and reporting : unlike similar code in suggest.py
@@ -456,12 +457,12 @@ def main(hard, use_previous):
         if len(testword) != 5:
             print("Test word ", testword, " fails length test")
             usage()
-            quit()
+            sys.exit()
 
         if len(testresult) != 5:
             print("Test result ", testresult, " fails length test")
             usage()
-            quit()
+            sys.exit()
 
         # The wordlist is all in lower case
         # so ensure the testword is
@@ -470,13 +471,13 @@ def main(hard, use_previous):
         if not suggest.good_guess(testword):
             print("Bad trial word ", testword)
             usage()
-            quit()
+            sys.exit()
 
         testresult = testresult.upper()
         if not suggest.good_colours(testresult):
             print("Incorrect wordle report ", testresult)
             usage()
-            quit()
+            sys.exit()
 
         # Form a list of attempts and results.
 
@@ -600,9 +601,6 @@ def suggestion(guesslist, hard, use_previous, no_print=True):
         return trial_word
 
 
-import os
-from contextlib import chdir
-
 if __name__ == "__main__":
 
     # The data and .py files should be in the same directory as the executable.
@@ -614,4 +612,4 @@ if __name__ == "__main__":
 
     with chdir(directory):
         print_hi("Wordle helper/solver/assistant\n")
-        retVal = main(False, False)
+        main(False, False)
