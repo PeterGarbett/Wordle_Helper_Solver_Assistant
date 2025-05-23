@@ -1,7 +1,8 @@
 #
 #
-#	A previous answer list as of May 22 2025
+#	A previous answer list as of May 23 2025
 #
+SHUCK
 FOLIO
 ALARM
 BORNE
