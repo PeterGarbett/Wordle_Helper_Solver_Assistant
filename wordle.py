@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 #
-#   I need an implementation of wordle
+''' #   I need an implementation of wordle
 #   in order to test my wordle helper (solver)
 #   Sanity checks added which are hopefully only
 #   tripped from command line inputs
@@ -11,13 +11,14 @@
 # gives output
 #   Wordle
 #   later [('lemon', 'GYBBB')]
-
+'''
 
 import sys
 import sieve
 
 
 def wordle(target, guesses):
+    '''   An implementation of wordle '''
 
     state = ["-", "-", "-", "-", "-"]
     resultlist = []
@@ -31,13 +32,13 @@ def wordle(target, guesses):
         if 5 != len(value):
             return []
 
-        for index in range(0, len(value)):
+        for index, val in enumerate(value):
             if value[index] == target[index]:
                 letcounts[value[index]] = letcounts[value[index]] - 1
                 results[index] = "G"
                 state[index] = value[index]
 
-        for index in range(0, len(value)):
+        for index, val in enumerate(value):
             if not sieve.in_undetermined_peice(state, value[index], target):
                 if results[index] == "-":
                     results[index] = "B"
@@ -48,7 +49,7 @@ def wordle(target, guesses):
         #   Y's get handed out until the count of them in the target is exhausted
         #   then they get greyed out.
 
-        for index in range(0, len(value)):
+        for index, val in enumerate(value):
             if results[index] != "G":
                 if 0 < letcounts[value[index]]:
                     results[index] = "Y"
@@ -71,13 +72,13 @@ if __name__ == "__main__":
     if inputs == []:
         print("Missing calling parameters")
         print("./wordle  target_word  guess1 etc ....")
-        quit()
+        sys.exit()
 
     target = inputs.pop(0)
     result = wordle(target, inputs)
 
-    if result == []:
+    if not result:
         print("Invalid inputs")
-        quit()
+        sys.exit()
 
     print(target, wordle(target, inputs))
