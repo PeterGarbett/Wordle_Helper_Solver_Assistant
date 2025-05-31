@@ -1,7 +1,9 @@
 #
 #
-#	A previous answer list as of May 29 2025
+#	A previous answer list as of May 31 2025
 #
+HABIT
+IDIOM
 QUASH
 POLAR
 SPORT

@@ -29,6 +29,8 @@ wordle_test_results_p.txt           Test results using information about prior r
 wordle_test_results_h.txt           Hard mode test results
 wordle_test_results_hp.txt          Hard mode used with previous result info
 
+Hard mode using previous results only fails on one case now.
+
 
 Calling arguments (see later concrete examples)
 
