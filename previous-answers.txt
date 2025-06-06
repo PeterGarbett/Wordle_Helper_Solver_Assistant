@@ -1,7 +1,13 @@
 #
 #
-#	A previous answer list as of May 31 2025
+#	A previous answer list as of Jun 6 2025
 #
+EDIFY
+DATUM
+CEASE
+ADMIN
+PREEN
+ROUGH
 HABIT
 IDIOM
 QUASH
