@@ -89,6 +89,8 @@ def run_tests(inputargs):
     worst = max(attempts)
     if 6 < worst:
         print("Failed to solve within 6 tries, worst case is ",worst)
+    else:
+        print("Hooray! worst case is ",worst)
 
     print("Number of games:", len(attempts))
     print("Distribution of games:", Counter(attempts))
