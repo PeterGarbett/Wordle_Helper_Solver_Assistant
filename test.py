@@ -85,6 +85,11 @@ def run_tests(inputargs):
         if 6 < tries and not hard_mode:
             print(target, "Fails to solve in 6 tries - pointless continuing ")
             sys.exit()
+    
+    worst = max(attempts)
+    if 6 < worst:
+        print("Failed to solve within 6 tries, worst case is ",worst)
+
     print("Number of games:", len(attempts))
     print("Distribution of games:", Counter(attempts))
     print(
