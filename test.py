@@ -6,9 +6,14 @@
 #
 import sys
 from collections import Counter
+import datetime
 import wordle_helper
 import suggest
 import wordle
+
+
+today = datetime.datetime.now()
+print("Results generated starting at ",today)
 
 
 def run_tests(inputargs):
