@@ -1,3 +1,4 @@
+Results generated starting at  2025-06-28 00:28:37.219864
 Wordle solver testing
 Hard mode selected
 aback found in: 5 using sequence ['later', 'chasm', 'quack', 'knack', 'aback']
@@ -2331,6 +2332,7 @@ youth found in: 4 using sequence ['later', 'hoist', 'mouth', 'youth']
 zebra found in: 3 using sequence ['later', 'bread', 'zebra']
 zesty found in: 3 using sequence ['later', 'heist', 'zesty']
 zonal found in: 3 using sequence ['later', 'snail', 'zonal']
+Failed to solve within 6 tries, worst case is  8
 Number of games: 2331
 Distribution of games: Counter({4: 944, 3: 884, 5: 289, 2: 133, 6: 68, 7: 8, 8: 4, 1: 1})
 Giving a solution in this number of tries on average: 3.7048

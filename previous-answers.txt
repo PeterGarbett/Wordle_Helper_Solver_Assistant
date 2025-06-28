@@ -1,7 +1,21 @@
 #
 #
-#	A previous answer list as of Jun 14 2025
+#	A previous answer list as of Jun 28 2025
 #
+STUMP
+PLAIN
+OFFER
+COMFY
+ELITE
+ODDLY
+THRUM
+GLADE
+TAUPE
+CURIO
+MUNCH
+PRANK
+PETTY
+QUAIL
 GHOST
 BILGE
 VIXEN
