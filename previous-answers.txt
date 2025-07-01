@@ -1,7 +1,10 @@
 #
 #
-#	A previous answer list as of Jun 28 2025
+#	A previous answer list as of Jul 1 2025
 #
+MOLDY
+BLINK
+WITTY
 STUMP
 PLAIN
 OFFER
