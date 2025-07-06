@@ -1,7 +1,13 @@
 #
 #
-#	A previous answer list as of Jul 1 2025
+#	A previous answer list as of Jul 7 2025
 #
+STILT
+ATRIA
+BALER
+CURVE
+POPPY
+INCUR
 MOLDY
 BLINK
 WITTY
