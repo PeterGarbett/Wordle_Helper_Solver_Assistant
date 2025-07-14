@@ -1,7 +1,14 @@
 #
 #
-#	A previous answer list as of Jul 7 2025
+#	A previous answer list as of Jul 14 2025
 #
+UNDID
+GNOME 
+EXILE
+BRAND
+JUMPY
+NOVEL
+DREAD
 STILT
 ATRIA
 BALER
