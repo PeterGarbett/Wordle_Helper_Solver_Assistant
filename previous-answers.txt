@@ -1,7 +1,9 @@
 #
 #
-#	A previous answer list as of Jul 14 2025
+#	A previous answer list as of Jul 16 2025
 #
+NERVY
+FOIST
 UNDID
 GNOME 
 EXILE
