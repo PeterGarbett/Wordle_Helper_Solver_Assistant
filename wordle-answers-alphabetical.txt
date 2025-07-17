@@ -1161,6 +1161,7 @@ logic
 login
 loopy
 loose
+loris
 lorry
 loser
 louse
