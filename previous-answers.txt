@@ -1,7 +1,11 @@
 #
 #
-#	A previous answer list as of Jul 16 2025
+#	A previous answer list as of Jul 20 2025
 #
+BLANK
+SWORD
+LORIS
+MODAL
 NERVY
 FOIST
 UNDID
