@@ -1,7 +1,11 @@
 #
 #
-#	A previous answer list as of Jul 20 2025
+#	A previous answer list as of Jul 24 2025
 #
+QUAKE
+WATER
+BURNT
+TIZZY
 BLANK
 SWORD
 LORIS
