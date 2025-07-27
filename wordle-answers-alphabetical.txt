@@ -881,7 +881,7 @@ glyph
 gnash
 gnome
 godly
-gofer
+#gofer
 going
 golem
 golly
