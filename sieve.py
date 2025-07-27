@@ -33,8 +33,12 @@ def how_many(letterarray, condlist):
 def in_undetermined_peice(status, letter, word):
 
     for ind in range(0, len(word)):
-        if status[ind] == "-" and word[ind] == letter:
-            return True
+        try:
+            if status[ind] == "-" and word[ind] == letter:
+                return True
+        except:
+            print("ERROR: for status,letter,word, position",status,letter,word,ind)
+
     return False
 
 
