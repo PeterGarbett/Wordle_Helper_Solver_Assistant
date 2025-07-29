@@ -882,6 +882,7 @@ gnash
 gnome
 godly
 going
+gofer
 golem
 golly
 gonad
