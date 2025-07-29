@@ -214,6 +214,25 @@ def best_trial_words(guesslist, answers, pick_list, gone_before, hard_mode=False
     # No answers,1 answer (so it is the answer),and two answers
     # in which case the best trial word is to pick one.
 
+#   Hereby hangs a tale.  The addition of 'gofer' led to
+#   boxer taking 7 tries.  'later' is the word my algorithm
+#   comes out with, but it turns out it is slightly non optimal.
+#   Some clever people out there suggest 'tales' as a start word,
+#   and this solves the problem.  At some point looking at
+#   getting this out of the code naturally would be nice. 
+#   for now I force it.  It ammount to seaching for an 's'
+#   first go, wheras I used to search for a 'r'.
+#   'tales' also gets excluded from my candidates because
+#   its a plural...
+
+    if not guesslist:
+        return [[1,"tales"]]
+
+    # Fish out easy cases first.
+    # No answers,1 answer (so it is the answer),and two answers
+    # in which case the best trial word is to pick one.
+
+
     if answers == []:
         return []
 
@@ -488,6 +507,7 @@ def main(hard, use_previous):
 
 def suggestion(guesslist, hard, use_previous, no_print=True):
 
+
     valid_words = init_valid_words()
     gone_before = init_previous(True)
 
@@ -517,7 +537,6 @@ def suggestion(guesslist, hard, use_previous, no_print=True):
             genTrial = ""
     else:
         genTrial = ""
-
     #    print("Suggested trial word for general list :",genTrial)
 
     solved_and_answer = find_and_report(
