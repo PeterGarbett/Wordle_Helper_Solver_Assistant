@@ -124,4 +124,72 @@ To produce hard mode test results :
 This shows that on average you do better, but risk losing:
 
 Distribution of games: Counter({4: 941, 3: 883, 5: 289, 2: 133, 6: 68, 7: 8, 8: 4, 1: 1})
-Giving a solution in this number of tries on average: 3.7048
+Giving a solution in this number of tries on average: 3.704
+
+Phase 2 !!:
+
+The set of allowable solutions gets expanded occasionally
+and dealing with this gracefully is a design aim.
+
+The addition of 'gofer' led to
+boxer taking 7 tries.  'later' is the word my algorithm
+comes out with, but it turns out it is slightly non optimal.
+Some clever people out there suggest 'tales' as a start word,
+and this solves the problem.  At some point looking at
+getting this out of the code naturally would be nice. 
+for now I force it.  It ammount to seaching for an 's'
+first go, wheras I used to search for a 'r'.
+'tales' also gets excluded from my candidates because
+its a plural...
+
+Here are updated test results
+
+==> wordle_test_results_hp.txt <==
+wreck found in: 3 using sequence ['tales', 'urine', 'wreck']
+wrest found in: 3 using sequence ['tales', 'pesto', 'wrest']
+wring found in: 4 using sequence ['tales', 'crony', 'drunk', 'wring']
+write found in: 3 using sequence ['tales', 'refit', 'write']
+wryly found in: 4 using sequence ['tales', 'lyric', 'dryly', 'wryly']
+zonal found in: 3 using sequence ['tales', 'coral', 'zonal']
+Hooray! worst case is  6
+Number of games: 941
+Distribution of games: Counter({3: 497, 4: 309, 2: 100, 5: 30, 6: 5})
+Giving a solution in this number of tries on average: 3.3018
+
+==> wordle_test_results_h.txt <==
+yield found in: 3 using sequence ['tales', 'guile', 'yield']
+young found in: 3 using sequence ['tales', 'irony', 'young']
+youth found in: 3 using sequence ['tales', 'intro', 'youth']
+zebra found in: 4 using sequence ['tales', 'cedar', 'yearn', 'zebra']
+zesty found in: 4 using sequence ['tales', 'stone', 'heist', 'zesty']
+zonal found in: 3 using sequence ['tales', 'coral', 'zonal']
+Failed to solve within 6 tries, worst case is  8
+Number of games: 2337
+Distribution of games: Counter({4: 990, 3: 908, 5: 247, 2: 122, 6: 56, 7: 11, 8: 3})
+Giving a solution in this number of tries on average: 3.6799
+
+==> wordle_test_results_p.txt <==
+wreck found in: 3 using sequence ['tales', 'urine', 'wreck']
+wrest found in: 3 using sequence ['tales', 'pesto', 'wrest']
+wring found in: 4 using sequence ['tales', 'crony', 'drunk', 'wring']
+write found in: 3 using sequence ['tales', 'refit', 'write']
+wryly found in: 4 using sequence ['tales', 'lyric', 'dryly', 'wryly']
+zonal found in: 3 using sequence ['tales', 'coral', 'zonal']
+Hooray! worst case is  5
+Number of games: 941
+Distribution of games: Counter({3: 505, 4: 339, 2: 72, 5: 25})
+Giving a solution in this number of tries on average: 3.3369
+
+==> wordle_test_results.txt <==
+yield found in: 4 using sequence ['tales', 'guile', 'witty', 'yield']
+young found in: 3 using sequence ['tales', 'irony', 'young']
+youth found in: 3 using sequence ['tales', 'intro', 'youth']
+zebra found in: 4 using sequence ['tales', 'cedar', 'yearn', 'zebra']
+zesty found in: 4 using sequence ['tales', 'stone', 'heist', 'zesty']
+zonal found in: 4 using sequence ['tales', 'coral', 'windy', 'zonal']
+Hooray! worst case is  6
+Number of games: 2337
+Distribution of games: Counter({4: 1170, 3: 815, 5: 267, 2: 70, 6: 15})
+Giving a solution in this number of tries on average: 3.7184
+
+8
