@@ -142,7 +142,9 @@ first go, wheras I used to search for a 'r'.
 'tales' also gets excluded from my candidates because
 its a plural...
 
-Here are updated test results
+Here are updated test results. It is notable that
+using information from previous results now makes hard mode
+doable given the current set of answers.
 
 ==> wordle_test_results_hp.txt <==
 wreck found in: 3 using sequence ['tales', 'urine', 'wreck']
