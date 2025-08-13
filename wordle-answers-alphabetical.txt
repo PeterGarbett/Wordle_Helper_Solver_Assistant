@@ -1090,6 +1090,7 @@ knave
 knead
 kneed
 kneel
+knell
 knelt
 knife
 knock
