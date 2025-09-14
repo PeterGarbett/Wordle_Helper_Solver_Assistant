@@ -1,7 +1,18 @@
 #
 #
-#	A previous answer list as of Sep 2 2025
+#	A previous answer list as of Sep 13 2025
 #
+NADIR
+THROB
+CHAIR
+POUTY
+TRICK
+CHIRP
+TENOR
+MIGHT
+DRIFT
+BLEND
+FETCH
 MIGHT
 LEAST
 TOWER
