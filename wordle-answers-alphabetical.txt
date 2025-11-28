@@ -432,6 +432,7 @@ coach
 coast
 cobra
 cocoa
+colic
 colon
 color
 comet
