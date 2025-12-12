@@ -1,7 +1,22 @@
 #
 #
-#	A previous answer list as of Nov 27 2025
+#	A previous answer list as of Dec 12 2025
 #
+TRUCK
+GUESS
+ERASE
+SNIDE
+GRAVY
+FLUTE
+WAIST
+AMONG
+TULIP
+HASTE
+CACTI
+LEACH
+MUGGY
+GRUFF
+COLIC
 REMIT
 HOVEL
 PLEAD
