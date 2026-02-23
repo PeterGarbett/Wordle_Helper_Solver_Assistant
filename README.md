@@ -20,7 +20,7 @@ strategy.py                         Given a sequence of wordle trial words and r
 suggest.py                          Alternate entry point giving a terse suggestion for a trial word
 readfile_ignore_comments.py 	    Read a file into a list ignoring #comments . Null return is no such file
 
-test.py                             Test harness - correct inputs (add any parameter to invoke hard mode)
+wordle-test.py                      Test harness - correct inputs (add any parameter to invoke hard mode)
 corner_cases.sh                     Test paths for invalid inputs
 generate_test_results               Run test program with differing scenarios
 
@@ -38,7 +38,7 @@ Calling arguments (see later concrete examples)
 ./wordle.py  target_word trialword1  result1  ....
 ./strategy.py  trialword1  result1 ... 
 ./suggest.py  trialword1 result1 ... 
-./test.py > test_results.txt
+./wordle-test.py > test_results.txt
 
 Algorithm
 
@@ -120,7 +120,7 @@ Hard mode:
 
 ./wordle_hard.py can be used to provide guesses that satify constraints so far.
 To produce hard mode test results :
-./test.py hard 
+./wordle-test.py hard 
 This shows that on average you do better, but risk losing:
 
 Distribution of games: Counter({4: 941, 3: 883, 5: 289, 2: 133, 6: 68, 7: 8, 8: 4, 1: 1})

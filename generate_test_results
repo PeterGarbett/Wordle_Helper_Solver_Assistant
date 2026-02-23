@@ -4,9 +4,9 @@ echo "Generate test result files"
 
 #generate the most interesting sets first
 
-./test.py prev > wordle_test_results_p.txt
-./test.py hard prev > wordle_test_results_hp.txt
-./test.py hard > wordle_test_results_h.txt
-./test.py > wordle_test_results.txt
+./wordle-test.py prev > wordle_test_results_p.txt
+./wordle-test.py hard prev > wordle_test_results_hp.txt
+./wordle-test.py hard > wordle_test_results_h.txt
+./wordle-test.py > wordle_test_results.txt
 
 
