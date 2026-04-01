@@ -1,6 +1,27 @@
 #
 #
-#	A previous answer list as of Mar 13 2026
+#	A previous answer list as of Apr 1 2026
+FIZZY
+SWAMP
+COMET
+CHUMP
+AFOOT
+#repeat
+IVORY
+BEFIT
+WISER
+BROOD
+SERIF
+BASIL
+SLICK
+OASIS
+REHAB
+AMPLY
+CLASP
+DRAMA
+#repeat
+GRADE
+ANKLE
 EATEN
 SMELL
 TEDDY
