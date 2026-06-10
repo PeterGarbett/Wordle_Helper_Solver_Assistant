@@ -1,6 +1,33 @@
 #
 #
-#	A previous answer list as of May 15 2026
+#	A previous answer list as of Jun 10 2026
+ALIGN
+WHARF
+MAFIA
+#repeat
+THUMB
+MORPH
+NOBLY
+ALLOY
+NOTCH
+BASIS
+CHILI
+ETUDE
+CLANG
+DIVOT
+STUFF
+COUCH
+VISIT
+NIECE
+CHUCK
+VOCAL
+#repeat
+AGREE
+WRECK
+DUSTY
+LOATH
+BYLAW
+MOVER
 CREED
 WAVER
 DOWDY
