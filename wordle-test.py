@@ -11,9 +11,8 @@ import wordle_helper
 import suggest
 import wordle
 
-
 today = datetime.datetime.now()
-print("Results generated starting at ",today)
+print("Results generated starting at ", today)
 
 
 def run_tests(inputargs):
@@ -21,6 +20,7 @@ def run_tests(inputargs):
 
     hard_mode = False
     use_previous = False
+    YScoreFactor = 10		# Currenty the default ....
 
     if "hard" in inputargs:
         print("Hard mode selected")
@@ -31,6 +31,16 @@ def run_tests(inputargs):
             "Restrict tests to unused answers and use previous results to refine search"
         )
         use_previous = True
+
+    res = list(filter(lambda x: "Factor" in x, inputargs))
+    if res:
+        try:
+            factorSpec = res[0]
+            factor = factorSpec.split("=")
+            YScoreFactor = int(factor[1])
+        except:
+            print("Factor definition error")
+            sys.exit()
 
     gone_before = wordle_helper.init_previous(use_previous)
     possible_answers = wordle_helper.load_probable_answers()
@@ -54,7 +64,7 @@ def run_tests(inputargs):
         "roger",
         "wound",
     ]
-    #testcases= worst # ["bongo"]
+    #testcases = worst  # ["bongo"]
 
     # restrict to solutions we haven't had yet
 
@@ -73,7 +83,7 @@ def run_tests(inputargs):
                 target, trialwords
             )  # Generate what wordle would give you for these trial words ignoring previous answers
             nexttrial = suggest.nextTry(
-                guesslist, hard_mode, use_previous
+                guesslist, hard_mode, use_previous, YScoreFactor
             )  # See what I'd suggest given those results
 
             # Force initial guess
@@ -90,12 +100,12 @@ def run_tests(inputargs):
         if 6 < tries and not hard_mode:
             print(target, "Fails to solve in 6 tries - pointless continuing ")
             sys.exit()
-    
+
     worst = max(attempts)
     if 6 < worst:
-        print("Failed to solve within 6 tries, worst case is ",worst)
+        print("Failed to solve within 6 tries, worst case is ", worst)
     else:
-        print("Hooray! worst case is ",worst)
+        print("Hooray! worst case is ", worst)
 
     print("Number of games:", len(attempts))
     print("Distribution of games:", Counter(attempts))

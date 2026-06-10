@@ -21,6 +21,8 @@ import wordle
 
 
 use_previous = True
+YScoreFactorDefault = 10
+YScoreFactor = YScoreFactorDefault
 
 # The main word list files
 
@@ -202,7 +204,14 @@ def freqs(mylist):
 #   Form frequency table of valid words
 
 
-def best_trial_words(guesslist, answers, pick_list, gone_before, hard_mode=False):
+def best_trial_words(
+    guesslist,
+    answers,
+    pick_list,
+    gone_before,
+    hard_mode=False,
+    YScoreFactor=YScoreFactorDefault,
+):
     """guesslist : previous guesses and results
     answers   : list of words matching the constraints
     pick_list : list to pick trial words from
@@ -214,24 +223,23 @@ def best_trial_words(guesslist, answers, pick_list, gone_before, hard_mode=False
     # No answers,1 answer (so it is the answer),and two answers
     # in which case the best trial word is to pick one.
 
-#   Hereby hangs a tale.  The addition of 'gofer' led to
-#   boxer taking 7 tries.  'later' is the word my algorithm
-#   comes out with, but it turns out it is slightly non optimal.
-#   Some clever people out there suggest 'tales' as a start word,
-#   and this solves the problem.  At some point looking at
-#   getting this out of the code naturally would be nice. 
-#   for now I force it.  It ammount to seaching for an 's'
-#   first go, wheras I used to search for a 'r'.
-#   'tales' also gets excluded from my candidates because
-#   its a plural...
+    #   Hereby hangs a tale.  The addition of 'gofer' led to
+    #   boxer taking 7 tries.  'later' is the word my algorithm
+    #   comes out with, but it turns out it is slightly non optimal.
+    #   Some clever people out there suggest 'tales' as a start word,
+    #   and this solves the problem.  At some point looking at
+    #   getting this out of the code naturally would be nice.
+    #   for now I force it.  It ammount to seaching for an 's'
+    #   first go, wheras I used to search for a 'r'.
+    #   'tales' also gets excluded from my candidates because
+    #   its a plural...
 
     if not guesslist:
-        return [[1,"tales"]]
+        return [[1, "tales"]]
 
     # Fish out easy cases first.
     # No answers,1 answer (so it is the answer),and two answers
     # in which case the best trial word is to pick one.
-
 
     if answers == []:
         return []
@@ -381,10 +389,11 @@ def best_trial_words(guesslist, answers, pick_list, gone_before, hard_mode=False
     #   Letters labelled Y appear so more information
     #   is revealed by its use as a trial word.
 
+    #print(">>>", YScoreFactor)
     for item in candidates:
-        item[0] = item[0] + Yscore(item[1], keyList)
+        item[0] = item[0] + YScoreFactor * Yscore(item[1], keyList)
     candidates = sorted(candidates)
-
+    # print (candidates)
     return candidates
 
 
@@ -505,8 +514,7 @@ def main(hard, use_previous):
     suggestion(guesslist, hard, use_previous, False)
 
 
-def suggestion(guesslist, hard, use_previous, no_print=True):
-
+def suggestion(guesslist, hard, use_previous, no_print=True, YScoreFactor=YScoreFactorDefault):
 
     valid_words = init_valid_words()
     gone_before = init_previous(True)
@@ -526,7 +534,7 @@ def suggestion(guesslist, hard, use_previous, no_print=True):
 
     if 1 < len(answers):
         scores = best_trial_words(
-            guesslist, answers, probable_answers, gone_before, hard
+            guesslist, answers, probable_answers, gone_before, hard, YScoreFactor
         )
 
         # Catch the case where no answers are returned
@@ -557,7 +565,7 @@ def suggestion(guesslist, hard, use_previous, no_print=True):
         trial_word = ""
         if 1 < len(limited):
             scores = best_trial_words(
-                guesslist, limited, probable_answers, gone_before, hard
+                guesslist, limited, probable_answers, gone_before, hard, YScoreFactor
             )
             trial_word = scores[-1][1]
 
@@ -578,7 +586,7 @@ def suggestion(guesslist, hard, use_previous, no_print=True):
                         " wordle solutions after removing previously used answers",
                     )
                 scores = best_trial_words(
-                    guesslist, cutdown, candidates, gone_before, hard
+                    guesslist, cutdown, candidates, gone_before, hard, YScoreFactor
                 )
                 if not no_print:
                     print(cutdown)

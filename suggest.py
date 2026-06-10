@@ -55,18 +55,18 @@ def good_guesslist(guesslist):
     return True
 
 
-def next_best_guess(guesslist, hard, use_previous):
+def next_best_guess(guesslist, hard, use_previous,YScoreFactor=10):
 
-    answer = wordle_helper.suggestion(guesslist, hard, use_previous)
+    answer = wordle_helper.suggestion(guesslist, hard, use_previous,True,YScoreFactor)
     if answer == "":
         return ""
     return answer
 
 
-def nextTry(guesslist, hard, use_previous):
+def nextTry(guesslist, hard, use_previous=False,YScoreFactor=10):
 
     if good_guesslist(guesslist):
-        trial = next_best_guess(guesslist, hard, use_previous)
+        trial = next_best_guess(guesslist, hard, use_previous,YScoreFactor)
         return trial
     else:
         print("Bad guess list")

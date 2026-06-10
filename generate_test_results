@@ -3,10 +3,16 @@
 echo "Generate test result files"
 
 #generate the most interesting sets first
-
 ./wordle-test.py prev > wordle_test_results_p.txt
 ./wordle-test.py hard prev > wordle_test_results_hp.txt
 ./wordle-test.py hard > wordle_test_results_h.txt
-./wordle-test.py > wordle_test_results.txt
+./wordle-test.py  > wordle_test_results.txt
+
+exit
+./wordle-test.py "Factor=0" > wordle_test_results_f0.txt
+./wordle-test.py "Factor=1" > wordle_test_results_f1.txt
+./wordle-test.py "Factor=2" > wordle_test_results_f2.txt
+./wordle-test.py "Factor=3" > wordle_test_results_f3.txt
+./wordle-test.py "Factor=4" > wordle_test_results_f4.txt
 
 

@@ -191,7 +191,45 @@ zesty found in: 4 using sequence ['tales', 'stone', 'heist', 'zesty']
 zonal found in: 4 using sequence ['tales', 'coral', 'windy', 'zonal']
 Hooray! worst case is  6
 Number of games: 2337
-Distribution of games: Counter({4: 1170, 3: 815, 5: 267, 2: 70, 6: 15})
+Dinstribution of games: Counter({4: 1170, 3: 815, 5: 267, 2: 70, 6: 15})
 Giving a solution in this number of tries on average: 3.7184
 
-8
+Pahase 3 
+
+Modification to Yscore values
+
+The algorithm includes a measure of how good the trial word 
+candidates are at moving Y value letters to differing positions
+since using a letter at the same position will just get us a Y again
+and add no further information.
+
+I noticed sometime that the algorithm as it is does occasionally
+do this, which means the measure of the value of exploring 
+alternate Y positions wasn't given sufficient weight. This isn't
+surprising since there it isn't in the same scale as the weights
+allocated by the main algorithm which relies on the frequency
+of as yet unknown letters in the remaining solutions.
+
+
+I made code changes to explore this by putting in a scaling factor
+to the niceness before it is combined. The original algorithm
+corresponds to the results for f1 (i.e. a factor of 1). A factor of 10
+improves the results so this is now the default. 
+
+Here are a few sample values. They also confirm the Y niceness measurement is a 
+good idea since 0 means disable the use of niceness.  The test harness is set up
+to re-examine the situation if necessary.
+
+wordle_test_results_f0.txt:Giving a solution in this number of tries on average:   3.7459
+wordle_test_results_f1.txt:Giving a solution in this number of tries on average:   3.7208
+wordle_test_results_f2.txt:Giving a solution in this number of tries on average:   3.7238
+wordle_test_results_f3.txt:Giving a solution in this number of tries on average:   3.7038
+wordle_test_results_f4.txt:Giving a solution in this number of tries on average:   3.7046
+wordle_test_results_f5.txt:Giving a solution in this number of tries on average:   3.7046
+wordle_test_results_f10.txt:Giving a solution in this number of tries on average:  3.7025
+wordle_test_results_f50.txt:Giving a solution in this number of tries on average:  3.7025
+wordle_test_results_f100.txt:Giving a solution in this number of tries on average: 3.7025
+
+
+
+
