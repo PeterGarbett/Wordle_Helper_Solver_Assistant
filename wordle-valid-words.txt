@@ -3417,6 +3417,7 @@ ensky
 ensue
 enter
 entia
+entre
 entry
 enure
 enurn
