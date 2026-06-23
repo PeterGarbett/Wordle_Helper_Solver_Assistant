@@ -194,7 +194,7 @@ Number of games: 2337
 Dinstribution of games: Counter({4: 1170, 3: 815, 5: 267, 2: 70, 6: 15})
 Giving a solution in this number of tries on average: 3.7184
 
-Pahase 3 
+Phase 3 
 
 Modification to Yscore values
 
@@ -231,5 +231,13 @@ wordle_test_results_f50.txt:Giving a solution in this number of tries on average
 wordle_test_results_f100.txt:Giving a solution in this number of tries on average: 3.7025
 
 
+Phase 4
+
+Damon Bearden in an exchange on Facebook Dull mens club 
+pointed out entre was missing.  So I went in search of a better list.
+
+This list of valid words is said to be taken from the wordle sources
+
+https://github.com/tabatkins/wordle-list.git
 
 
