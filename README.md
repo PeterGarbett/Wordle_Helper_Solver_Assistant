@@ -241,3 +241,12 @@ This list of valid words is said to be taken from the wordle sources
 https://github.com/tabatkins/wordle-list.git
 
 
+Phase 5
+
+Iv'e updated the test results. Average now 3.7011
+
+Strategy note: More new words are coming into use. When its down
+to two, recommend using the trial word from the more general list
+if 3 or more goes left
+
+
