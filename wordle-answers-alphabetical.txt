@@ -116,6 +116,7 @@ ascot
 ashen
 aside
 askew
+aspic
 assay
 asset
 atlas
@@ -130,6 +131,7 @@ aunty
 avail
 avert
 avian
+avian  
 avoid
 await
 awake
@@ -180,6 +182,7 @@ begat
 beget
 begin
 begun
+beige
 being
 belch
 belie
@@ -336,10 +339,12 @@ canny
 canoe
 canon
 caper
+capon
 caput
 carat
 cargo
 carol
+carom
 carry
 carve
 caste
@@ -399,6 +404,7 @@ circa
 civic
 civil
 clack
+clack  
 claim
 clamp
 clang
@@ -429,6 +435,7 @@ cluck
 clued
 clump
 clung
+clunk
 coach
 coast
 cobra
@@ -858,6 +865,7 @@ geeky
 geese
 genie
 genre
+geode
 ghost
 ghoul
 giant
@@ -867,6 +875,7 @@ girly
 girth
 given
 giver
+gizmo
 glade
 gland
 glare
@@ -885,9 +894,10 @@ glove
 glyph
 gnash
 gnome
+gnome 
 godly
-going
 gofer
+going
 golem
 golly
 gonad
@@ -1053,6 +1063,7 @@ inlay
 inlet
 inner
 input
+intel
 inter
 intro
 ionic
@@ -1153,6 +1164,7 @@ lilac
 limbo
 limit
 linen
+linen 
 liner
 lingo
 lipid
@@ -1227,6 +1239,7 @@ match
 matey
 matte
 mauve
+maven
 maxim
 maybe
 mayor
@@ -1269,9 +1282,9 @@ mogul
 moist
 molar
 moldy
+mommy
 money
 month
-mommy
 mooch
 moody
 moose
@@ -1281,6 +1294,7 @@ morph
 mossy
 motel
 motif
+motif 
 motor
 motto
 moult
@@ -1600,6 +1614,7 @@ relax
 relay
 relic
 remit
+remix
 renal
 renew
 repay
@@ -1657,6 +1672,7 @@ rugby
 ruler
 rumba
 rumor
+runny
 rupee
 rural
 rusty
@@ -1754,9 +1770,9 @@ shelf
 shell
 shied
 shift
+shill
 shine
 shiny
-shill
 shire
 shirk
 shirt
@@ -1877,6 +1893,7 @@ sooth
 sooty
 sorry
 sound
+soupy
 south
 sower
 space
@@ -2179,6 +2196,7 @@ tutor
 twang
 tweak
 tweed
+tween
 tweet
 twice
 twine
