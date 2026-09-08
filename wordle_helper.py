@@ -72,6 +72,24 @@ def turned_up_earlier(candidates, gone_before):
     return usage
 
 
+def check_lengths(min, max, wordlist, filename):
+    # Turns out we get weird errors if the data files of words include ones of incorrect lengths
+    oksucc = True
+
+    for x in wordlist:
+        size = len(x)
+
+        if size < min:
+            oksucc = False
+            print("ERROR:", x, "smaller than it should be in ", filename)
+
+        if max < size:
+            oksucc = False
+            print("ERROR:", x, "bigger than it should be in ", filename)
+
+    return oksucc
+
+
 def find_and_report(answers, limited, genTrial, gone_before, no_print):
 
     if answers == []:
@@ -389,7 +407,7 @@ def best_trial_words(
     #   Letters labelled Y appear so more information
     #   is revealed by its use as a trial word.
 
-    #print(">>>", YScoreFactor)
+    # print(">>>", YScoreFactor)
     for item in candidates:
         item[0] = item[0] + YScoreFactor * Yscore(item[1], keyList)
     candidates = sorted(candidates)
@@ -415,12 +433,15 @@ def init_valid_words():
 # load a much smaller list of words used as wordle answers
 
 
-def load_probable_answers():
-    with open(wordle_answers_alphabetical) as f:
+def load_probable_answers(wordle_answers):
+    with open(wordle_answers) as f:
         valid_words = f.readlines()
         f.close()
     # Remove all the pesky \n's
     valid_words = [x.replace("\n", "") for x in valid_words]
+
+    check_lengths(5, 5, valid_words, wordle_answers)
+
     return valid_words
 
     #
@@ -450,6 +471,8 @@ def init_previous(use_previous):
 
     previous_answers = "previous-answers.txt"
     prevList = readfile_ignore_comments.readfile_ignore_comments(previous_answers, -1)
+
+    check_lengths(5, 5, prevList, previous_answers)
 
     if not prevList:
         use_previous = False
@@ -514,7 +537,9 @@ def main(hard, use_previous):
     suggestion(guesslist, hard, use_previous, False)
 
 
-def suggestion(guesslist, hard, use_previous, no_print=True, YScoreFactor=YScoreFactorDefault):
+def suggestion(
+    guesslist, hard, use_previous, no_print=True, YScoreFactor=YScoreFactorDefault
+):
 
     valid_words = init_valid_words()
     gone_before = init_previous(True)
@@ -522,7 +547,7 @@ def suggestion(guesslist, hard, use_previous, no_print=True, YScoreFactor=YScore
     # Probable answers is a list of words known to be in the
     # wordle answer list.
 
-    probable_answers = load_probable_answers()
+    probable_answers = load_probable_answers(wordle_answers_alphabetical)
 
     # A list of valid words consistent with the constraints
 

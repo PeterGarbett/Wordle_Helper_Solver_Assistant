@@ -13,6 +13,7 @@ import wordle
 
 today = datetime.datetime.now()
 print("Results generated starting at ", today)
+wordle_answers_alphabetical = "wordle-answers-alphabetical.txt"
 
 
 def run_tests(inputargs):
@@ -20,7 +21,7 @@ def run_tests(inputargs):
 
     hard_mode = False
     use_previous = False
-    YScoreFactor = 10		# Currenty the default ....
+    YScoreFactor = 10  # Currenty the default ....
 
     if "hard" in inputargs:
         print("Hard mode selected")
@@ -43,7 +44,7 @@ def run_tests(inputargs):
             sys.exit()
 
     gone_before = wordle_helper.init_previous(use_previous)
-    possible_answers = wordle_helper.load_probable_answers()
+    possible_answers = wordle_helper.load_probable_answers(wordle_answers_alphabetical)
     testcases = possible_answers  # test against all possibles
     worst = [
         "belly",
@@ -64,7 +65,7 @@ def run_tests(inputargs):
         "roger",
         "wound",
     ]
-    #testcases = worst  # ["bongo"]
+    # testcases = worst  # ["bongo"]
 
     # restrict to solutions we haven't had yet
 
