@@ -1,6 +1,8 @@
 #
 #
-#	a previous answer list as of sep 6 2026
+#	a previous answer list as of sep 8 2026
+liven
+blind
 beige
 soupy
 wager
