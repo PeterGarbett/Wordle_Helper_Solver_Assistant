@@ -434,12 +434,8 @@ def init_valid_words():
 
 
 def load_probable_answers(wordle_answers):
-    with open(wordle_answers) as f:
-        valid_words = f.readlines()
-        f.close()
-    # Remove all the pesky \n's
-    valid_words = [x.replace("\n", "") for x in valid_words]
 
+    valid_words = readfile_ignore_comments.readfile_ignore_comments(wordle_answers, -1)
     check_lengths(5, 5, valid_words, wordle_answers)
 
     return valid_words
